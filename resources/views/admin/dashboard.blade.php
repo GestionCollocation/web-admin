@@ -271,12 +271,16 @@
                 </div>
                 <div class="card-body table-responsive">
                   <table class="table table-hover">
-                   
+                   <thead style="text-transform: uppercase ; font-weight : bold ; text-align: center">
+                    
+                     <td>id</td>
+                     <td></td>
+                     <td>id bien immobilier</td>
+                     <td>action</td>
+                   </thead>
                 
                       <tr>
-                       <td style="width: 10%;">
-                         <img src="https://api.time.com/wp-content/uploads/2017/12/terry-crews-person-of-year-2017-time-magazine-2.jpg" alt="" style=" border-radius: 50%; width: 40px; height: 40px; "> 
-                       </td>
+                      <td>5</td>
                        <td>
                          <h5 style="font-weight: bolder; color: rgb(4,81,142)">titre annonce</h5>
                          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
@@ -291,11 +295,142 @@
                         
                        </td>
 
-                       <td>
-
-                     <a href="http://">1</a>
+                       <td style="text-align: center">
+                          <a href="http://">1</a>
                        </td>
 
+                       <td class="td-actions text-right">
+                        <button type="button" rel="tooltip" title="Modifer l'utilisateur" class="btn btn-primary btn-link btn-sm">
+                          <i class="material-icons">edit</i>
+                        </button>
+                        <button type="button" rel="tooltip" title="Supprimer" class="btn btn-danger btn-link btn-sm">
+                          <i class="material-icons">close</i>
+                        </button>
+                        <button type="button" rel="tooltip" title="Voir plus" style="background-color: white !important ; color: #2ecc71;" class="btn  btn-sm">
+                          <i class="material-icons">
+                            read_more
+                          </i>
+                        </button>
+                       </td>
+                      </tr>
+                      <hr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 col-md-12">
+              <div class="card">
+                <div class="card-header card-header-warning" style="width: 50%; background-color: rgb(41,195,72) !important ; ">
+                  <h4 class="card-title" style="font-weight: bold;" >Les utilisateur</h4>
+                  <p class="card-category">Derniére 5 utilisateurs ajoutées</p>
+                </div>
+                <div class="card-body table-responsive">
+                  <table class="table table-hover">
+                <thead style="text-transform: uppercase ; font-weight : bold">
+                <td>
+                Photo 
+                </td>  
+                <td>
+                  ID 
+                  </td>  
+                  <td>
+                    name 
+                    </td>  
+
+                    <td>
+                      EMAIL 
+                      </td>  
+                      <td>
+                        SEXE 
+                        </td>  
+                        <td>a propos</td>
+                        <td>créer à</td>
+                        <td>action</td>
+                
+                </thead>   
+                
+                      <tr>
+                       <td style="width: 10%;">
+                         <img src="https://api.time.com/wp-content/uploads/2017/12/terry-crews-person-of-year-2017-time-magazine-2.jpg" alt="" style=" border-radius: 50%; width: 40px; height: 40px; "> 
+                       </td>
+                       <td>1</td>
+                       <td>testName</td>
+                       <td>test@gmail.com</td>
+                       <td>Homme</td>
+                       <td>
+                        
+                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                       </td>
+                       <td>21/12/2021 14:20</td>
+                       <td class="td-actions text-right">
+                        <button type="button" rel="tooltip" title="Modifer l'utilisateur" class="btn btn-primary btn-link btn-sm">
+                          <i class="material-icons">edit</i>
+                        </button>
+                        <button type="button" rel="tooltip" title="Supprimer" class="btn btn-danger btn-link btn-sm">
+                          <i class="material-icons">close</i>
+                        </button>
+                        <button type="button" rel="tooltip" title="Voir plus" style="background-color: white !important ; color: #2ecc71;" class="btn  btn-sm">
+                          <i class="material-icons">
+                            read_more
+                          </i>
+                        </button>
+                       </td>
+
+                     
+                      </tr>
+                      <hr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 col-md-12">
+              <div class="card">
+                <div class="card-header card-header-warning" style="width: 50%; background-color: rgb(41,195,72) !important ; ">
+                  <h4 class="card-title" style="font-weight: bold;" >Les bien immobiliers</h4>
+                  <p class="card-category">Derniére 5 bien bienImmobilier ajoutées</p>
+                </div>
+                <div class="card-body table-responsive">
+                  <table class="table table-hover">
+                   <thead style="text-transform: uppercase ; font-weight: bold">
+                     <td>
+                       photo
+                     </td>
+                     <td>ID</td>
+                     <td></td>
+                     <td>prix</td>
+                     <td>etat</td>
+                     <td>status</td>
+                     <td>action</td>
+                   </thead>
+                
+                      <tr>
+                       <td style="width: 10%;">
+                         <img src="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2019/9/16/0/IO_Tongue-and-Groove_Beech-Street_3.jpg.rend.hgtvcom.616.411.suffix/1568648112267.jpeg" alt="" style=" border-radius: 10%; width: 100px; height: 100px; "> 
+                       </td>
+                       <td>12</td>
+                       <td>
+                         <h5 style="font-weight: bolder; color: rgb(4,81,142)">titre bi</h5>
+                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                       
+                          <span>
+                          
+                        <span> location :  <span style="font-weight: bold; color: rgb(4,81,142);">ville, quartier</span>&nbsp;&nbsp;</span> 
+                         
+                         <span>personnes :  <span style="font-weight: bold; color: rgb(4,81,142);">test</span>&nbsp;&nbsp; </span>   
+                         <span>superficie :  <span style="font-weight: bold; color: rgb(4,81,142);">test</span>&nbsp;&nbsp; </span>   
+                         <span>chambres :  <span style="font-weight: bold; color: rgb(4,81,142);">test</span>&nbsp;&nbsp; </span>   
+                        
+                          </span>
+                      
+                        
+                       </td>
+                       <td>
+                         400 DH
+                       </td>
+                       <td>dispo</td>
+                       <td>neuf</td>
+
+                  
                        <td class="td-actions text-right">
                         <button type="button" rel="tooltip" title="Modifer l'utilisateur" class="btn btn-primary btn-link btn-sm">
                           <i class="material-icons">edit</i>
