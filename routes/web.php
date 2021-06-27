@@ -50,6 +50,10 @@ Route::get('/users', function () {
 Route::get('/bienImmobilier', function () {
     return view('admin.bienImmobilier');
 });
+
+Route::get('/annonce', function () {
+    return view('admin.annonce');
+});
 Auth::routes();
 
 

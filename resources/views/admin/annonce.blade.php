@@ -44,7 +44,7 @@
               <p>Les utilisateurs</p>
             </a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item ">
             <a class="nav-link" href="/bienImmobilier">
               <i class="material-icons">
                 business
@@ -52,7 +52,7 @@
               <p>Les bien immobiliers</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item active ">
             <a class="nav-link" href="./tables.html">
               <i class="material-icons">
                 article
@@ -120,95 +120,101 @@
       <!-- End Navbar -->
 <div class="content-fluid pr-4 pl-4" >
   
-  <h2>Les bien immobiliers</h2>
-  <div class="row  ">
-    <div class="col-md-6 col-sm-12 ">
-      <div class="card " style="width : 95% !important" >
-        <img class="card-img-top"  src="https://www.montgomeryhomes.com.au/wp-content/uploads/2020/11/facade-coolum-display-home-Coolum-Leppington.jpg" alt="Card image cap">
-        <div class="card-body">
-          <span style="color: rgb(41,195,72) ; font-weight : bold">ID : 2</span>
-          <h5 class="card-title" style="font-size: 30px">bien immobilier titre</h5>
-          <div class="card-text">
-            <span class="material-icons" style="color: grey ; height : 50% ">
-              location_on
-              </span>
-              <span>Fes,Morocco</span>
-                <br>
-                <br>
-              <span style="background-color : rgb(175, 245, 189) ; color : rgb(41,195,72) ; border: 2px solid rgb(175, 245, 189);
-              border-radius: 5px; padding : 0.3em  ;font-weight : bold ; font-size : 2em">300 DH</span>
-              <br>
-              <br>
+  <h2>Les annonces</h2>
 
-              <div class="row">
-                <div class="col-4">
-                  <span style="text-transform: uppercase ; color : grey ; font-size : 1.2em">chambres</span>
-                  <br>
-                  <span style="font-weight : bold ; font-size : 1.5em ; color :rgb(4,81,142)">45</span>
+  <div class="row pr-4 pl-4">
+       {{-- annonce start --}}
+    <div class="row">
+        <div class="col-12 " style="background-color: rgb(255, 255, 255)">
+            <span class="ml-4 mr-4 mt-4 p-1 " style="color: rgb(41,195,72) ; font-weight : bold">ID : 2</span>
+          
+          <div class="row">
+             
+                <div class="col-1 pl-4 pr-4 pt-4">
+                  <img src="https://api.time.com/wp-content/uploads/2017/12/terry-crews-person-of-year-2017-time-magazine-2.jpg" alt="" style=" border-radius: 50%; width: 40px; height: 40px; "> 
                 </div>
-                <div class="col-4">
-                    <span style="text-transform: uppercase ; color : grey ; font-size : 1.2em">  personnes</span>
-                   <br>
-                    <span style="font-weight : bold ; font-size : 1.5em ; color :rgb(4,81,142)">12</span></div>
-                <div class="col-4">
-                  <span style="text-transform: uppercase ; color : grey ; font-size : 1.2em">superficie</span>
-                  <br>
-                  <span style="font-weight : bold ; font-size : 1.5em ; color :rgb(4,81,142)">120 m</span>
-                  </div>
-              </div>
-    
-          </div>
-       <br>
-          <a href="#" class="btn" style="background-color: rgb(41,195,72)">VOIR PLUS</a>
-        </div>
-      </div>
-
-    </div>
-   
-    <div class="col-md-6 col-sm-12 ">
-      <div class="card " style="width : 95% !important" >
-        <img class="card-img-top"  src="https://www.montgomeryhomes.com.au/wp-content/uploads/2020/11/facade-coolum-display-home-Coolum-Leppington.jpg" alt="Card image cap">
-        <div class="card-body">
-          <span style="color: rgb(41,195,72) ; font-weight : bold">ID : 2</span>
-          <h5 class="card-title" style="font-size: 30px">bien immobilier titre</h5>
-          <div class="card-text">
-            <span class="material-icons" style="color: grey ; height : 50% ">
-              location_on
-              </span>
-              <span>Fes,Morocco</span>
-                <br>
-                <br>
-              <span style="background-color : rgb(175, 245, 189) ; color : rgb(41,195,72) ; border: 2px solid rgb(175, 245, 189);
-              border-radius: 5px; padding : 0.3em  ;font-weight : bold ; font-size : 2em">300 DH</span>
-              <br>
-              <br>
-
-              <div class="row">
-                <div class="col-4">
-                  <span style="text-transform: uppercase ; color : grey ; font-size : 1.2em">chambres</span>
-                  <br>
-                  <span style="font-weight : bold ; font-size : 1.5em ; color :rgb(4,81,142)">45</span>
+                <div class="col-11 pl-4 pr-4 pt-4">
+                   <a href=""><h4 style="font-weight: bold ; color :rgb(4,81,142)">Wassim ELBAKKOURI  <span style="font-size: 12px ; font-weight : normal ; color : grey">le 24/013/2042 à 12:33</span></h4></a> 
+                   
                 </div>
-                <div class="col-4">
-                    <span style="text-transform: uppercase ; color : grey ; font-size : 1.2em">  personnes</span>
-                   <br>
-                    <span style="font-weight : bold ; font-size : 1.5em ; color :rgb(4,81,142)">12</span></div>
-                <div class="col-4">
-                  <span style="text-transform: uppercase ; color : grey ; font-size : 1.2em">superficie</span>
+                <br><br>
+                <div class="col-12 pl-4 pr-4 pt-4">
+                 
+                    <p style="text-align: justify">  Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta quia deleniti voluptas ipsam reiciendis sapiente nulla voluptatibus perferendis voluptate exercitationem asperiores a officia error corporis ratione tenetur, nesciunt animi iure?</p>
+                  
+                </div>
                   <br>
-                  <span style="font-weight : bold ; font-size : 1.5em ; color :rgb(4,81,142)">120 m</span>
-                  </div>
-              </div>
-    
-          </div>
-       <br>
-          <a href="#" class="btn" style="background-color: rgb(41,195,72)">VOIR PLUS</a>
+                  <br>
+                  <br>
+                <div class="col-12 ">
+                    <div class="row">
+                        <div class="col-6">
+                          <i class="material-icons" style="color: rgb(41,195,72) ">
+                              location_on
+                          </i>
+                          <span>Fes,Morocco</span>
+                          
+                        </div>
+                        <div class="col-6">
+                          <i class="material-icons" style=" color: rgb(41,195,72)">
+                              group
+                          </i>
+                          <span>3 personnes</span>
+                           
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+               
+                <div class="col-12" style="background-color: rgb(109, 109, 201)">
+                    <div class="row  " style="text-transform: uppercase ; text-decoration : none; ">
+                        <div class="col-4 text-center"  style="color : white">Commentaires</div>
+                        <div class="col-4 text-center"><a href="" style="color : white">modifier</a> </div>
+                        <div class="col-4 text-center"><a href="#" style="color : white">supprimer</a> </div>
+                    </div>
+                </div>
+            
+            </div>
         </div>
+       
+  <div class="col-12 pr-4">
+      <br>
+    
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+                
+                <div class="col-1 ">
+                    <img src="https://api.time.com/wp-content/uploads/2017/12/terry-crews-person-of-year-2017-time-magazine-2.jpg" alt="" style=" border-radius: 50%; width: 40px; height: 40px; "> 
+                </div>
+                <div class="col-11 " style="background-color: rgb(255, 255, 255) ; border-radius: 10px">
+                  <span  style="color: rgb(41,195,72) ; font-weight : bold">ID : 2</span>
+                  <h5 class="pt-2" style="font-weight: bold ; color : rgb(4,81,142)">Wassim ELBAKKOURI <span style="font-size: 12px ; font-weight : normal ; color : grey">le 24/013/2042 à 12:33</span></h5>
+                 
+                  <p style="text-align: justify">   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam repellendus dolore libero. Nihil doloribus incidunt officia quasi ipsum itaque laboriosam neque similique optio consequatur, iure eos voluptatum dolorem id sapiente.</p>
+                  <div class="col-12" style="background-color: rgb(109, 109, 201)">
+                      <div class="row  " style="text-transform: uppercase ; text-decoration : none; ">
+                        
+                          <div class="col-6 text-center"><a href="" style="color : white">modifier</a> </div>
+                          <div class="col-6 text-center"><a href="#" style="color : white">supprimer</a> </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    
       </div>
-
-    </div>
-
   </div>
+    </div>
+  </div>
+
+
+
+
+  
+
+
   
   
   </div>
