@@ -118,8 +118,96 @@
         </div>
      
       <!-- End Navbar -->
-<div class="content">
+<div class="content pr-4 pl-4" style="padding-top: -10%">
+  
+  <h2>Les bien immobiliers</h2>
+  <div class="row  ">
+    <div class="col-md-6 col-sm-12 ">
+      <div class="card " style="width : 95% !important" >
+        <img class="card-img-top"  src="https://www.montgomeryhomes.com.au/wp-content/uploads/2020/11/facade-coolum-display-home-Coolum-Leppington.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="font-size: 30px">bien immobilier titre</h5>
+          <div class="card-text">
+            <span class="material-icons" style="color: grey ; height : 50% ">
+              location_on
+              </span>
+              <span>Fes,Morocco</span>
+                <br>
+                <br>
+              <span style="background-color : rgb(175, 245, 189) ; color : rgb(41,195,72) ; border: 2px solid rgb(175, 245, 189);
+              border-radius: 5px; padding : 0.3em  ;font-weight : bold ; font-size : 2em">300 DH</span>
+              <br>
+              <br>
 
+              <div class="row">
+                <div class="col-4">
+                  <span style="text-transform: uppercase ; color : grey ; font-size : 1.2em">chambres</span>
+                  <br>
+                  <span style="font-weight : bold ; font-size : 1.5em ; color :rgb(4,81,142)">45</span>
+                </div>
+                <div class="col-4">
+                    <span style="text-transform: uppercase ; color : grey ; font-size : 1.2em">  personnes</span>
+                   <br>
+                    <span style="font-weight : bold ; font-size : 1.5em ; color :rgb(4,81,142)">12</span></div>
+                <div class="col-4">
+                  <span style="text-transform: uppercase ; color : grey ; font-size : 1.2em">superficie</span>
+                  <br>
+                  <span style="font-weight : bold ; font-size : 1.5em ; color :rgb(4,81,142)">120 m</span>
+                  </div>
+              </div>
+    
+          </div>
+       <br>
+          <a href="#" class="btn" style="background-color: rgb(41,195,72)">VOIR PLUS</a>
+        </div>
+      </div>
+
+    </div>
+   
+    <div class="col-md-6 col-sm-12 ">
+      <div class="card " style="width : 95% !important" >
+        <img class="card-img-top"  src="https://www.montgomeryhomes.com.au/wp-content/uploads/2020/11/facade-coolum-display-home-Coolum-Leppington.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" style="font-size: 30px">bien immobilier titre</h5>
+          <div class="card-text">
+            <span class="material-icons" style="color: grey ; height : 50% ">
+              location_on
+              </span>
+              <span>Fes,Morocco</span>
+                <br>
+                <br>
+              <span style="background-color : rgb(175, 245, 189) ; color : rgb(41,195,72) ; border: 2px solid rgb(175, 245, 189);
+              border-radius: 5px; padding : 0.3em  ;font-weight : bold ; font-size : 2em">300 DH</span>
+              <br>
+              <br>
+
+              <div class="row">
+                <div class="col-4">
+                  <span style="text-transform: uppercase ; color : grey ; font-size : 1.2em">chambres</span>
+                  <br>
+                  <span style="font-weight : bold ; font-size : 1.5em ; color :rgb(4,81,142)">45</span>
+                </div>
+                <div class="col-4">
+                    <span style="text-transform: uppercase ; color : grey ; font-size : 1.2em">  personnes</span>
+                   <br>
+                    <span style="font-weight : bold ; font-size : 1.5em ; color :rgb(4,81,142)">12</span></div>
+                <div class="col-4">
+                  <span style="text-transform: uppercase ; color : grey ; font-size : 1.2em">superficie</span>
+                  <br>
+                  <span style="font-weight : bold ; font-size : 1.5em ; color :rgb(4,81,142)">120 m</span>
+                  </div>
+              </div>
+    
+          </div>
+       <br>
+          <a href="#" class="btn" style="background-color: rgb(41,195,72)">VOIR PLUS</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  
   
   </div>
 
