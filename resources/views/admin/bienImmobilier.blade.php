@@ -118,7 +118,7 @@
         </div>
      
       <!-- End Navbar -->
-<div class="content-fluid pr-4 pl-4" >
+<div class="content pr-4 pl-4" style="padding-top: -10%">
   
   <h2>Les bien immobiliers</h2>
   <div class="row  ">
@@ -126,7 +126,6 @@
       <div class="card " style="width : 95% !important" >
         <img class="card-img-top"  src="https://www.montgomeryhomes.com.au/wp-content/uploads/2020/11/facade-coolum-display-home-Coolum-Leppington.jpg" alt="Card image cap">
         <div class="card-body">
-          <span style="color: rgb(41,195,72) ; font-weight : bold">ID : 2</span>
           <h5 class="card-title" style="font-size: 30px">bien immobilier titre</h5>
           <div class="card-text">
             <span class="material-icons" style="color: grey ; height : 50% ">
@@ -169,7 +168,6 @@
       <div class="card " style="width : 95% !important" >
         <img class="card-img-top"  src="https://www.montgomeryhomes.com.au/wp-content/uploads/2020/11/facade-coolum-display-home-Coolum-Leppington.jpg" alt="Card image cap">
         <div class="card-body">
-          <span style="color: rgb(41,195,72) ; font-weight : bold">ID : 2</span>
           <h5 class="card-title" style="font-size: 30px">bien immobilier titre</h5>
           <div class="card-text">
             <span class="material-icons" style="color: grey ; height : 50% ">
@@ -226,13 +224,13 @@
   <script src="assets/js/plugins/jquery.validate.min.js"></script>
   <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
   <script src="assets/js/plugins/jquery.bootstrap-wizard.js"></script>
-  <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+  <!--  Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
   <script src="assets/js/plugins/bootstrap-selectpicker.js"></script>
   <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
   <script src="assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
   <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
   <script src="assets/js/plugins/jquery.dataTables.min.js"></script>
-  <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+  <!--  Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
   <script src="assets/js/plugins/bootstrap-tagsinput.js"></script>
   <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
   <script src="assets/js/plugins/jasny-bootstrap.min.js"></script>

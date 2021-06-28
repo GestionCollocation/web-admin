@@ -18,13 +18,14 @@
   <link href="{{asset('assets/css/material-dashboard.css?v=2.1.2')}}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{asset('assets/demo/demo.css')}}" rel="stylesheet" />
+
 </head>
 
 <body class="">
   <div class="wrapper ">
     <div class="sidebar" data-color="green" data-background-color="white" data-image="{{asset('assets/img/sidebar-1.jpg')}}">
      
-      <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
+      <div class="logo"><a href="#" class="simple-text logo-normal">
          location
         </a></div>
       <div class="sidebar-wrapper">
@@ -53,7 +54,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./tables.html">
+            <a class="nav-link" href="/admin/annonce">
               <i class="material-icons">
                 article
               </i>
@@ -158,7 +159,7 @@
                     </i>
                   </div>
                   <p class="card-category">Bien immobiliers</p>
-                  <h3 class="card-title">{{count($bienImm)}}</h3>
+                  <h3 class="card-title">{{count($nb_bienImm)}}</h3>
                 
                 </div>
                 <div class="card-footer">
@@ -177,7 +178,7 @@
                     </i>
                   </div>
                   <p class="card-category">Annonce</p>
-                  <h3 class="card-title">{{count($posts)}}</h3>
+                  <h3 class="card-title">{{count($nb_posts)}}</h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats" >
@@ -195,7 +196,7 @@
                     </i>
                   </div>
                   <p class="card-category">utilisateurs</p>
-                  <h3 class="card-title">{{count($users)}}</h3>
+                  <h3 class="card-title">{{count($nb_users)}}</h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
@@ -275,117 +276,123 @@
                     
                      <td>id</td>
                      <td></td>
-                     <td>id bien immobilier</td>
+                   <!--   <td>id bien immobilier</td> -->
+                   <td>ID utilisateur</td>
                      <td>action</td>
                    </thead>
-                
+                    @foreach($post as $item)
                       <tr>
-                      <td>5</td>
+                     <td>{{ $item->id }}</td>
                        <td>
-                         <h5 style="font-weight: bolder; color: rgb(4,81,142)">titre annonce</h5>
-                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                         <h5 style="font-weight: bolder; color: rgb(4,81,142) ;">{{ $item->titre }}</h5>
+                         <p class="descAnn">{{$item->description}}</p>
                        
                           <span>
                           
-                           <span> location :  <span style="font-weight: bold; color: rgb(4,81,142);">test</span>&nbsp;&nbsp;</span> 
+                           <span> location :  <span style="font-weight: bold; color: rgb(4,81,142);">{{$item->location}}</span>&nbsp;&nbsp;</span> 
                          
-                         <span>personnes :  <span style="font-weight: bold; color: rgb(4,81,142);">test</span>&nbsp;&nbsp; </span>   
+                         <span>personnes :  <span style="font-weight: bold; color: rgb(4,81,142);">{{$item->nb_personnes}}</span>&nbsp;&nbsp; </span>   
                           </span>
                       
                         
                        </td>
 
-                       <td style="text-align: center">
+                      <!-- <td style="text-align: center">
                           <a href="http://">1</a>
-                       </td>
-
+                       </td> -->
+                        <td>{{$item->id_utilisateur}}</td>
                        <td class="td-actions text-right">
-                        <button type="button" rel="tooltip" title="Modifer l'utilisateur" class="btn btn-primary btn-link btn-sm">
+                       <!--  <button type="button" rel="tooltip" title="Modifer l'utilisateur" class="btn btn-primary btn-link btn-sm">
                           <i class="material-icons">edit</i>
-                        </button>
-                        <button type="button" rel="tooltip" title="Supprimer" class="btn btn-danger btn-link btn-sm">
+                        </button> -->
+                        <button type="button" rel="tooltip" title="Supprimer" data-toggle="modal" data-target="#deletePost{{$item->id}}" class="btn btn-danger btn-link btn-sm" style="border:none;">
                           <i class="material-icons">close</i>
                         </button>
-                        <button type="button" rel="tooltip" title="Voir plus" style="background-color: white !important ; color: #2ecc71;" class="btn  btn-sm">
+                        <button type="button" rel="tooltip"   title="Voir plus" style="background-color: white !important ; color: #2ecc71; border:none;" class="btn  btn-sm " >
                           <i class="material-icons">
                             read_more
                           </i>
                         </button>
+                       
                        </td>
+                        @include('modal.deletePostAdmin')
                       </tr>
-                      <hr>
+                    
+                      @endforeach
                   </table>
                 </div>
               </div>
             </div>
             <div class="col-lg-12 col-md-12">
               <div class="card">
-                <div class="card-header card-header-warning" style="width: 50%; background-color: rgb(41,195,72) !important ; ">
+                <div class="card-header card-header-warning" style="width: 50%; background-color: rgb(4,81,142) !important ; ">
                   <h4 class="card-title" style="font-weight: bold;" >Les utilisateur</h4>
                   <p class="card-category">Derniére 5 utilisateurs ajoutées</p>
                 </div>
                 <div class="card-body table-responsive">
                   <table class="table table-hover">
                 <thead style="text-transform: uppercase ; font-weight : bold">
-                <td>
-                Photo 
-                </td>  
-                <td>
-                  ID 
-                  </td>  
-                  <td>
-                    name 
-                    </td>  
-
                     <td>
-                      EMAIL 
-                      </td>  
-                      <td>
-                        SEXE 
-                        </td>  
+                       Photo 
+                    </td>  
+                    <td>
+                       ID 
+                    </td>  
+                    <td>
+                       name 
+                    </td>  
+                    <td>
+                       EMAIL 
+                    </td>  
+                    <td>
+                       SEXE 
+                    </td>  
                         <td>a propos</td>
                         <td>créer à</td>
                         <td>action</td>
                 
                 </thead>   
-                
+                @foreach($user as $tem)
                       <tr>
                        <td style="width: 10%;">
-                         <img src="https://api.time.com/wp-content/uploads/2017/12/terry-crews-person-of-year-2017-time-magazine-2.jpg" alt="" style=" border-radius: 50%; width: 40px; height: 40px; "> 
+                         <img src="{{ URL::asset($tem->profile_image) }}" alt="" style=" border-radius: 50%; width: 40px; height: 40px; "> 
                        </td>
-                       <td>1</td>
-                       <td>testName</td>
-                       <td>test@gmail.com</td>
-                       <td>Homme</td>
+                       <td>{{$tem->id}}</td>
+                       <td>{{$tem->name}}</td>
+                       <td>{{$tem->email}}</td>
+                       <td>{{$tem->sexe}}</td>
                        <td>
                         
-                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                         <p>{{$tem->apropos}}</p>
                        </td>
-                       <td>21/12/2021 14:20</td>
+                       <td>{{ \Carbon\Carbon::parse($tem->created_at)->format('d-m-Y H:i')}}</td>
                        <td class="td-actions text-right">
-                        <button type="button" rel="tooltip" title="Modifer l'utilisateur" class="btn btn-primary btn-link btn-sm">
+                       <!--  <button type="button" rel="tooltip" title="Modifer l'utilisateur" class="btn btn-primary btn-link btn-sm">
                           <i class="material-icons">edit</i>
-                        </button>
-                        <button type="button" rel="tooltip" title="Supprimer" class="btn btn-danger btn-link btn-sm">
+                        </button> -->
+                        <button type="button" rel="tooltip" title="Supprimer"  data-toggle="modal" data-target="#deleteUser{{$tem->id}}"  class="btn btn-danger btn-link btn-sm">
                           <i class="material-icons">close</i>
                         </button>
-                        <button type="button" rel="tooltip" title="Voir plus" style="background-color: white !important ; color: #2ecc71;" class="btn  btn-sm">
+                        <button type="button" rel="tooltip" title="Voir plus" style="background-color: white !important ; color: #2ecc71;" class="btn  btn-sm " >
                           <i class="material-icons">
                             read_more
                           </i>
                         </button>
                        </td>
 
-                     
+                     @include('modal.deleteUserAdmin')
                       </tr>
+
+                      @endforeach
                       <hr>
+
                   </table>
                 </div>
               </div>
             </div>
             <div class="col-lg-12 col-md-12">
               <div class="card">
-                <div class="card-header card-header-warning" style="width: 50%; background-color: rgb(41,195,72) !important ; ">
+                <div class="card-header card-header-warning" style="width: 50%; background-color: darkorange !important ; ">
                   <h4 class="card-title" style="font-weight: bold;" >Les bien immobiliers</h4>
                   <p class="card-category">Derniére 5 bien bienImmobilier ajoutées</p>
                 </div>
@@ -402,40 +409,44 @@
                      <td>status</td>
                      <td>action</td>
                    </thead>
-                
+                    @foreach($bienImm as $bien)
                       <tr>
                        <td style="width: 10%;">
-                         <img src="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2019/9/16/0/IO_Tongue-and-Groove_Beech-Street_3.jpg.rend.hgtvcom.616.411.suffix/1568648112267.jpeg" alt="" style=" border-radius: 10%; width: 100px; height: 100px; "> 
+                         </div>
+                                @php
+                                    $photos = json_decode($bien->images);
+                                @endphp
+                         <img src="{{ URL::asset('uploads/'.$photos[0]) }}" alt="" style=" border-radius: 10%; width: 100px; height: 100px; "> 
                        </td>
                        <td>12</td>
                        <td>
-                         <h5 style="font-weight: bolder; color: rgb(4,81,142)">titre bi</h5>
+                         <h5 style="font-weight: bolder; color: rgb(4,81,142)">{{$bien->titre}}</h5>
                          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                        
                           <span>
                           
-                        <span> location :  <span style="font-weight: bold; color: rgb(4,81,142);">ville, quartier</span>&nbsp;&nbsp;</span> 
-                         
-                         <span>personnes :  <span style="font-weight: bold; color: rgb(4,81,142);">test</span>&nbsp;&nbsp; </span>   
-                         <span>superficie :  <span style="font-weight: bold; color: rgb(4,81,142);">test</span>&nbsp;&nbsp; </span>   
-                         <span>chambres :  <span style="font-weight: bold; color: rgb(4,81,142);">test</span>&nbsp;&nbsp; </span>   
+                        <span> location :  <span style="font-weight: bold; color: rgb(4,81,142);">{{$bien->ville}} , {{$bien->quartier}}</span>&nbsp;&nbsp;</span> 
+                          
+                         <span>personnes :  <span style="font-weight: bold; color: rgb(4,81,142);">{{$bien->nb_personnes}}</span>&nbsp;&nbsp; </span>   
+                         <span>superficie :  <span style="font-weight: bold; color: rgb(4,81,142);">{{$bien->superficie}}</span>&nbsp;&nbsp; </span>   
+                         <span>chambres :  <span style="font-weight: bold; color: rgb(4,81,142);">{{$bien->nb_chambres}}</span>&nbsp;&nbsp; </span>   
                         
                           </span>
                       
                         
                        </td>
                        <td>
-                         400 DH
+                         {{$bien->prix}}
                        </td>
-                       <td>dispo</td>
-                       <td>neuf</td>
+                       <td> {{$bien->etat}}</td>
+                       <td> {{$bien->statut}}</td>
 
                   
                        <td class="td-actions text-right">
-                        <button type="button" rel="tooltip" title="Modifer l'utilisateur" class="btn btn-primary btn-link btn-sm">
+                        <!-- <button type="button" rel="tooltip" title="Modifer l'utilisateur" class="btn btn-primary btn-link btn-sm">
                           <i class="material-icons">edit</i>
-                        </button>
-                        <button type="button" rel="tooltip" title="Supprimer" class="btn btn-danger btn-link btn-sm">
+                        </button> -->
+                        <button type="button" rel="tooltip" title="Supprimer" class="btn btn-danger btn-link btn-sm" data-toggle="modal" data-target="#deleteBien{{$bien->id}}">
                           <i class="material-icons">close</i>
                         </button>
                         <button type="button" rel="tooltip" title="Voir plus" style="background-color: white !important ; color: #2ecc71;" class="btn  btn-sm">
@@ -444,7 +455,9 @@
                           </i>
                         </button>
                        </td>
+                       @include('modal.deleteBiAdmin')
                       </tr>
+                      @endforeach
                       <hr>
                   </table>
                 </div>
@@ -473,13 +486,13 @@
   <script src="assets/js/plugins/jquery.validate.min.js"></script>
   <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
   <script src="assets/js/plugins/jquery.bootstrap-wizard.js"></script>
-  <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+  <!--  Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
   <script src="assets/js/plugins/bootstrap-selectpicker.js"></script>
   <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
   <script src="assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
   <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
   <script src="assets/js/plugins/jquery.dataTables.min.js"></script>
-  <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+  <!--  Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
   <script src="assets/js/plugins/bootstrap-tagsinput.js"></script>
   <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
   <script src="assets/js/plugins/jasny-bootstrap.min.js"></script>
@@ -681,6 +694,8 @@
 
     });
   </script>
+
+
 </body>
 
 </html>

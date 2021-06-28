@@ -1,6 +1,6 @@
 
 
-<div class="modal fade" id="deletePost{{$tem->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="deleteUser{{$tem->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -9,12 +9,14 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-       <i class="fas fa-exclamation-circle"></i> Vous ête sûr de supprimer ce poste 
+      <div class="modal-body text-center mb-5" style="margin-top: 5px; ">
+        <img src="averr.jpg" class="img-responsive"  style=" max-width: 20%; margin-top: 5px; ">
+            <h2> Vous ête sûr?</h2>
+       Vous ête sûr de supprimer cet uilisateur  
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-        <a  class="btn btn-danger" href="{{route('post.destroy',$tem->id)}}" style="color: white;">Supprimer</a>
+        <a  class="btn btn-danger" href="{{route('user.destroy',$tem->id)}}" style="color: white;">Supprimer</a>
       </div>
     </div>
   </div>

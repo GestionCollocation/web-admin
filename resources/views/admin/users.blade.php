@@ -135,6 +135,7 @@
                 <table class="table table-hover">
                   <thead class="text" style="color: grey; font-weight: bold !important; text-transform: uppercase ;">
                     <th>ID</th>
+                    <th>Phto</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>sexe</th>
@@ -146,6 +147,9 @@
                   <tbody>
                     <tr>
                       <td  style="width: 5%;">1</td>
+                      <td style="width: 10%;">
+                         <img src="{{ URL::asset() }}" alt="" style=" border-radius: 50%; width: 40px; height: 40px; "> 
+                       </td>
                       <td  style="width: 10%;">Dakota Rice</td>
                       <td>dakota@gmail.com</td>
                       <td  style="width: 5%;">female</td>
@@ -168,23 +172,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-4">
-            <div class="card card-profile">
-              <div class="card-avatar">
-                <a href="javascript:;">
-                  <img class="img" src="assets/img/faces/marc.jpg" />
-                </a>
-              </div>
-              <div class="card-body">
-                <h6 class="card-category text-gray">Username</h6>
-                <h4 class="card-title">email@gmail.com</h4>
-                <p class="card-description">
-                  Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                </p>
-                <a href="javascript:;" class="btn  " style="background-color: #13d052;">plus de details</a>
-              </div>
-            </div>
-    </div>
+         
 </div>
   </div>
 

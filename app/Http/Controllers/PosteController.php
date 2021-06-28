@@ -169,11 +169,15 @@ class PosteController extends Controller
 
 public function indexAdmin(){
  
-   
-   $posts= Poste::whereDate('created_at', '=', Carbon::today()->toDateString())->get();
-   $users= User::whereDate('created_at', '=', Carbon::today()->toDateString())->get();
-   $bienImm= BienImmobilier::whereDate('created_at', '=', Carbon::today()->toDateString())->get();
-    return view('admin.dashboard')->with('posts',$posts)->with('users',$users)->with('bienImm',$bienImm);
+    $post= DB::table('postes')->orderBy('created_at', 'DESC')->limit(5)->get();
+    $bienImm= DB::table('bien_immobiliers')->orderBy('created_at', 'DESC')->limit(5)->get();
+    $user= DB::table('users')->where('name', 'not like', '%Admin%')->orderBy('created_at', 'DESC')->limit(5)->get();
+   $nb_posts= Poste::whereDate('created_at', '=', Carbon::today()->toDateString())->get();
+   $nb_users= User::whereDate('created_at', '=', Carbon::today()->toDateString())->get();
+   $nb_bienImm= BienImmobilier::whereDate('created_at', '=', Carbon::today()->toDateString())->get();
+
+    
+    return view('admin.dashboard')->with('nb_posts',$nb_posts)->with('nb_users',$nb_users)->with('nb_bienImm',$nb_bienImm)->with('post',$post)->with('bienImm',$bienImm)->with('user',$user);
 
 
 }

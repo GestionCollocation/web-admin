@@ -50,8 +50,7 @@ Route::get('/users', function () {
 Route::get('/bienImmobilier', function () {
     return view('admin.bienImmobilier');
 });
-
-Route::get('/annonce', function () {
+Route::get('/admin/annonce', function () {
     return view('admin.annonce');
 });
 Auth::routes();
@@ -152,4 +151,7 @@ Route::post('/comments/updateps/{id}','App\Http\Controllers\CommentsController@u
 
 // ADMIN 
 Route::get('/dashboard', [App\Http\Controllers\PosteController::class, 'indexAdmin'])->name('admin.home')->middleware('is_admin');
-// Rutes for post 
+//supprimer utilisateur par admin
+Route::get('/user/destroy/{id}','App\Http\Controllers\UserController@destroy')->name('user.destroy');
+// supprimer Bien Immobiler par admin
+Route::get('/bi/destroy/{id}','App\Http\Controllers\BienImmobilierController@destroy')->name('bi.destroy');

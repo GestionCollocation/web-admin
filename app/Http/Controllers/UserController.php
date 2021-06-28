@@ -50,4 +50,12 @@ class UserController extends Controller
          return redirect('profile')->with('success','profile update successflly');
        
     }
+
+     public function destroy($id) 
+    {
+         $post = User::find($id)->delete();
+         return redirect()->back()->with('success_delete', 'Supprimé avec Succès');
+
+    }
+
 }
