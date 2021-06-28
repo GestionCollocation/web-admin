@@ -53,6 +53,10 @@ Route::get('/bienImmobilier', function () {
 Route::get('/admin/annonce', function () {
     return view('admin.annonce');
 });
+
+Route::get('/admin/profile', function () {
+    return view('admin.profile');
+});
 Auth::routes();
 
 

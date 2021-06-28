@@ -355,7 +355,7 @@
                 @foreach($user as $tem)
                       <tr>
                        <td style="width: 10%;">
-                         <img src="{{ URL::asset($tem->profile_image) }}" alt="" style=" border-radius: 50%; width: 40px; height: 40px; "> 
+                         <img src="" alt="" style=" border-radius: 50%; width: 40px; height: 40px; "> 
                        </td>
                        <td>{{$tem->id}}</td>
                        <td>{{$tem->name}}</td>
