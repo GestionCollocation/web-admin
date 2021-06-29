@@ -57,6 +57,14 @@ Route::get('/admin/annonce', function () {
 Route::get('/admin/profile', function () {
     return view('admin.profile');
 });
+
+Route::get('/admin/biDetails', function () {
+    return view('admin.biDetails');
+});
+
+Route::get('/admin/userProfile', function () {
+    return view('admin.userProfile');
+});
 Auth::routes();
 
 
