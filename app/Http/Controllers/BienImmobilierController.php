@@ -250,6 +250,16 @@ public function fetch(Request $request){
   echo $output;
 
 }
+ public function bi_admin()
+    {
+          $bi= BienImmobilier::latest()->paginate(10);
+        return view('admin.BienImmobilier')->with('bi',$bi);  
+    }
    
+  public function show_admin($id)
+    {
+       $bien = BienImmobilier::find($id);
+       return view('admin.biDetails')->with('bien',$bien);
+    }
 
 }

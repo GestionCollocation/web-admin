@@ -7,10 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet"
-        href="{{ asset('https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500') }}">
-    <link rel="stylesheet" href="{{ asset('fonts/icomoon/style.css') }}">
+        href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
+    <link rel="stylesheet" href="{{asset('fonts/icomoon/style.css')}}">
 
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
@@ -20,16 +24,13 @@
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('fonts/flaticon/font/flaticon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fl-bigmug-line.css') }}">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-        integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
-
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-</head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+</head>
 <body>
 
     <div class="site-loader"></div>
@@ -94,6 +95,22 @@
                                     <li><a href="/connecter">Se Connecter</a></li>
 
                                 @else
+                                  @if(auth()->user()->is_admin == 1)
+                                    <li class="has-children">
+                                        <a href="/profile"><img src="{{ Auth::user()->profile_image }}" width="60px"
+                                                style="border-radius: 50%;height: 40px; width: 40px "> </a>
+                                        <ul class="dropdown arrow-top">
+                                             <li><a href="/dashboard">Dashboard</a></li>
+                                            <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Deconnexion</a>
+                                            </li>
+                                            <form id="logout-form" action="{{ route('logout') }}"
+                                                method="POST" class="d-none">
+                                                @csrf
+                                            </form> 
+                                        </ul>
+                                    </li>
+                                     @else
                                     <li class="has-children">
                                         <a href="/profile"><img src="{{ URL::asset(Auth::user()->profile_image) }}" width="60px"
                                                 style="border-radius: 50%;height: 40px; width: 40px "> </a>
@@ -102,21 +119,13 @@
                                             <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">Deconnexion</a>
                                             </li>
-
-
                                             <form id="logout-form" action="{{ route('logout') }}"
                                                 method="POST" class="d-none">
                                                 @csrf
-                                            </form>
-                                            <!--  <li><a href="#">Commercial Building</a></li>
-                      <li class="has-children">
-                        <a href="#">Sub Menu</a>
-                        <ul class="dropdown">
-                          <li><a href="#">Menu One</a></li>
-                          <li><a href="#">Menu Two</a></li>
-                          <li><a href="#">Menu Three</a></li>-->
+                                            </form> 
                                         </ul>
                                     </li>
+                                   @endif
                                 @endguest
                             </ul>
                         </nav>
@@ -164,10 +173,14 @@
                                     style="height:400px"></div>
                         </div>
                     </div>
+        
                     <div class="bg-white property-body border-bottom border-left border-right">
                         <!-- <div style="margin-bottom:20px;margin-top:-35px;margin-left:-41px;"><span class="offer-type bg-success p-2" href="#">{{ $bienimmobilier->user_nom }}</span></div>
              <h5 style="margin-top:-35px;margin-bottom:20px;margin-left:-10px">Posté par : <strong><a href="#" style="color:#6c757d;">{{ $bienimmobilier->user_nom }}</a></strong></h5>
               -->
+
+
+
 
                         <div class="row mb-6 justify-content-md-center position-relative">
                             <div class="offer-type-wrap position-absolute" style="top: 3px;right: 3px;">
@@ -232,7 +245,20 @@
                             @endforeach
 
                         </div>
+<!-- PARTAAGE  -->
+<div class="dropdown" style="margin-left:550px ; margin-top: 50px;"  >
+  <a  data-toggle="dropdown" class="property-favorite" >
+    <span id="iluke"><i class="fas fa-share" href="" style="cursor: pointer;"> Partagez </i></span>
+  </a>
+  <div class="dropdown-menu">
+    <a class="dropdown-item"  href="{{ route('post.partage',$bienimmobilier->id) }}">Sur le site</a>
+    <a class="dropdown-item" id="facebook-btn" href="#">Faceboock</a>
+    <a class="dropdown-item" id="instagram-btn" href="#">Instagram</a>
+    <a class="dropdown-item" id="twitter-btn" href="#">Twitter</a>
+  </div>
+</div>           
                     </div>
+
                 </div>
                 <div class="col-lg-4">
 
@@ -364,6 +390,20 @@
         <script src="{{ asset('js/circleaudioplayer.js') }}"></script>
 
         <script src="{{ asset('js/main.js') }}"></script>
+        <script type="text/javascript">
+            const facebookBtn = document.getElementById('facebook-btn');
+            const instagramBtn = document.getElementById('instagram-btn');
+            const twitterBtn = document.getElementById('twitter-btn');
+
+         
+
+          
+            let postUrl = encodeURI("http://127.0.0.1:8000/acceuil/{{ $bienimmobilier->id }}"); 
+            let postTitle = encodeURI('{{ $bienimmobilier->titre }}');
+
+             facebookBtn.setAttribute("href",`https://www.facebook.com/sharer.php?u=${postUrl}&text=${postTitle}`);
+            twitterBtn.setAttribute("href",`https://www.twitter.com/share?url=${postUrl}&text=${postTitle}`)
+        </script>
 
 </body>
 

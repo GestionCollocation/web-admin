@@ -36,7 +36,7 @@
             </a>
           </li>
           <li class="nav-item   ">
-            <a class="nav-link" href="/users">
+            <a class="nav-link" href="{{route('userAdmin')}}">
               <i class="material-icons">
                 people
               </i>
@@ -44,7 +44,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="/bienImmobilier">
+            <a class="nav-link" href="{{route('biAdmin')}}">
               <i class="material-icons">
                 business
               </i>
@@ -52,7 +52,7 @@
             </a>
           </li>
           <li class="nav-item active ">
-            <a class="nav-link" href="./tables.html">
+            <a class="nav-link" href="{{route('posteAdmin')}}">
               <i class="material-icons">
                 article
               </i>
@@ -60,13 +60,13 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
+            <a class="nav-link" href="/admin/profile">
               <i class="material-icons">person</i>
               <p>Profile</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
+            <a class="nav-link" href="/admin/profile">
               <i class="material-icons">
                 info
               </i>
@@ -78,7 +78,7 @@
               <i class="material-icons">
                 logout
               </i>
-              <p>Disconnecter</p>
+              <p>Déconnecter</p>
             </a>
           </li>
          
@@ -122,24 +122,24 @@
   <h2>Les annonces</h2>
 
   <div class="row pr-4 pl-4">
-       {{-- annonce start --}}
-    <div class="row">
+      @foreach($posts as $item)
+    <div class="row" style="margin-bottom: 20px;">
         <div class="col-12 " style="background-color: rgb(255, 255, 255)">
-            <span class="ml-4 mr-4 mt-4 p-1 " style="color: rgb(41,195,72) ; font-weight : bold">ID : 2</span>
+            <span class="ml-4 mr-4 mt-4 p-1 " style="color: rgb(41,195,72) ; font-weight : bold">ID : {{$item->id}}</span>
           
           <div class="row">
              
                 <div class="col-1 pl-4 pr-4 pt-4">
-                  <img src="https://api.time.com/wp-content/uploads/2017/12/terry-crews-person-of-year-2017-time-magazine-2.jpg" alt="" style=" border-radius: 50%; width: 40px; height: 40px; "> 
+                  <img src="{{ URL::asset($item->user->profile_image) }}" alt="" style=" border-radius: 50%; width: 40px; height: 40px; "> 
                 </div>
                 <div class="col-11 pl-4 pr-4 pt-4">
-                   <a href=""><h4 style="font-weight: bold ; color :rgb(4,81,142)">Wassim ELBAKKOURI  <span style="font-size: 12px ; font-weight : normal ; color : grey">le 24/013/2042 à 12:33</span></h4></a> 
+                   <a href=""><h4 style="font-weight: bold ; color :rgb(4,81,142); margin-right: 0px">{{$item->user->name}} <span style="font-size: 12px ; font-weight : normal ; color : grey">{{ \Carbon\Carbon::parse($item->created_at)->format('d-m-Y à H:i')}}</span></h4></a> 
                    
                 </div>
                 <br><br>
                 <div class="col-12 pl-4 pr-4 pt-4">
                  
-                    <p style="text-align: justify">  Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta quia deleniti voluptas ipsam reiciendis sapiente nulla voluptatibus perferendis voluptate exercitationem asperiores a officia error corporis ratione tenetur, nesciunt animi iure?</p>
+                    <p style="text-align: justify">  {{$item->description}}</p>
                   
                 </div>
                   <br>
@@ -151,14 +151,14 @@
                           <i class="material-icons" style="color: rgb(41,195,72) ">
                               location_on
                           </i>
-                          <span>Fes,Morocco</span>
+                          <span>{{$item->location}}</span>
                           
                         </div>
                         <div class="col-6">
                           <i class="material-icons" style=" color: rgb(41,195,72)">
                               group
                           </i>
-                          <span>3 personnes</span>
+                          <span>{{$item->nb_personnes}} personnes</span>
                            
                         </div>
                     </div>
@@ -168,99 +168,151 @@
                
                 <div class="col-12" style="background-color: rgb(109, 109, 201)">
                     <div class="row  " style="text-transform: uppercase ; text-decoration : none; ">
-                        <div class="col-4 text-center"  style="color : white">Commentaires</div>
-                        <div class="col-4 text-center"><a href="" style="color : white">modifier</a> </div>
-                        <div class="col-4 text-center"><a href="#" style="color : white">supprimer</a> </div>
+                  <div class="col-4 text-center" id="commentBtn{{$item->id}}"  style="color : white; pointer-events: cursor;"><a href="#" style="color : white; pointer-events: cursor;">Commentaires</a></div>    
+                        <div class="col-4 text-center"><a href="#" style="color : white; pointer-events: cursor;">modifier</a> </div>
+                        <div class="col-4 text-center"><a href="#" data-toggle="modal" data-target="#deletePost{{$item->id}}" style="color : white ; pointer-events: cursor ;">supprimer</a> </div>
                     </div>
                 </div>
-            
+              @include('modal.deletePostAdmin')
             </div>
         </div>
        
   <div class="col-12 pr-4">
       <br>
-    
-    <div class="row">
-        <div class="col-12">
+   <script>
+
+   var showComment{{$item->id}} = true ;
+  
+  
+ document.getElementById("commentBtn{{$item->id}}").onclick  = function() {
+  var x = document.getElementById("comment{{$item->id}}");
+ 
+  if (showComment{{$item->id}}=== true)  
+    x.style.display = "block" ;   
+   else 
+    x.style.display = "none";
+  
+   showComment{{$item->id}} = ! showComment{{$item->id}}
+  
+ }
+
+
+   </script>
+    <div class="row" id="comment{{$item->id}}" style="display : none">
+       @foreach($item->comments as $comments)
+       @include('modal.deleteCommentsAdmin')
+        <div class="col-12" style="margin-top: 10px">
             <div class="row">
                 
                 <div class="col-1 ">
-                    <img src="https://api.time.com/wp-content/uploads/2017/12/terry-crews-person-of-year-2017-time-magazine-2.jpg" alt="" style=" border-radius: 50%; width: 40px; height: 40px; "> 
+                    <img src="{{ URL::asset($comments->user->profile_image) }}" alt="" style=" border-radius: 50%; width: 40px; height: 40px; "> 
                 </div>
                 <div class="col-11 " style="background-color: rgb(255, 255, 255) ; border-radius: 10px">
                   <span  style="color: rgb(41,195,72) ; font-weight : bold">ID : 2</span>
-                  <h5 class="pt-2" style="font-weight: bold ; color : rgb(4,81,142)">Wassim ELBAKKOURI <span style="font-size: 12px ; font-weight : normal ; color : grey">le 24/013/2042 à 12:33</span></h5>
+                  <h5 class="pt-2" style="font-weight: bold ; color : rgb(4,81,142)">{{$comments->user->name}} <span style="font-size: 12px ; font-weight : normal ; color : grey">{{ \Carbon\Carbon::parse($comments->created_at)->format('d-m-Y à H:i')}}</span></h5>
                  
-                  <p style="text-align: justify">   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam repellendus dolore libero. Nihil doloribus incidunt officia quasi ipsum itaque laboriosam neque similique optio consequatur, iure eos voluptatum dolorem id sapiente.</p>
+                  <p style="text-align: justify">  {{$comments->contenue}}</p>
                   <div class="col-12" style="background-color: rgb(109, 109, 201)">
                       <div class="row  " style="text-transform: uppercase ; text-decoration : none; ">
                         
                           <div class="col-6 text-center"><a href="" style="color : white">modifier</a> </div>
-                          <div class="col-6 text-center"><a href="#" style="color : white">supprimer</a> </div>
+                          <div class="col-6 text-center"><a href="#" data-toggle="modal" data-target="#deleteComment{{$comments->id}}"  style="color : white">supprimer</a> </div>
                       </div>
                   </div>
                 </div>
             </div>
         </div>
+
+@if(isset($comments->reponse))
+@foreach($comments->reponse as $reply)
+        <div class="col-12" style="margin-top: 10px">
+            <div class="row">
+                @include('modal.deleteReplyAdmin')
+                <div class="col-1 ">
+                    <img src="{{ URL::asset($reply->user->profile_image) }}" alt="" style=" border-radius: 50%; width: 40px; height: 40px; "> 
+                </div>
+                <div class="col-11 " style="background-color: rgb(255, 255, 255) ; border-radius: 10px">
+                  <span  style="color: rgb(41,195,72) ; font-weight : bold">ID : 2</span>
+                  <h5 class="pt-2" style="font-weight: bold ; color : rgb(4,81,142)">{{$reply->user->name}} <span style="font-size: 12px ; font-weight : normal ; color : grey">{{ \Carbon\Carbon::parse($reply->created_at)->format('d-m-Y à H:i')}}</span></h5>
+                 
+                  <p style="text-align: justify">  {{$reply->contenue}}</p>
+                  <div class="col-12" style="background-color: rgb(109, 109, 201)">
+                      <div class="row  " style="text-transform: uppercase ; text-decoration : none; ">
+                        
+                          <div class="col-6 text-center"><a href="" style="color : white">modifier</a> </div>
+                          <div class="col-6 text-center"><a href="#" data-toggle="modal" data-target="#deleteReply{{$reply->id}}" style="color : white">supprimer</a> </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+  @endif
+
+
+
+
+    @endforeach
     
       </div>
   </div>
     </div>
+    @endforeach
   </div>
 
 
 
 
-  
+  <div class="paginationlinks" style="margin-left: 400px">
+{!! $posts->links('layouts.paginationlinks') !!}
 
-
-  
+  </div>
   
   </div>
 
   <!--   Core JS Files   -->
-  <script src="assets/js/core/jquery.min.js"></script>
-  <script src="assets/js/core/popper.min.js"></script>
-  <script src="assets/js/core/bootstrap-material-design.min.js"></script>
-  <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+ <script src="{{asset('assets/js/core/jquery.min.js')}}"></script>
+  <script src="{{asset('assets/js/core/popper.min.js')}}"></script>
+  <script src="{{asset('assets/js/core/bootstrap-material-design.min.js')}}"></script>
+  <script src="{{asset('assets/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
   <!-- Plugin for the momentJs  -->
-  <script src="assets/js/plugins/moment.min.js"></script>
+  <script src="{{asset('assets/js/plugins/moment.min.js')}}"></script>
   <!--  Plugin for Sweet Alert -->
-  <script src="assets/js/plugins/sweetalert2.js"></script>
+  <script src="{{asset('assets/js/plugins/sweetalert2.js')}}"></script>
   <!-- Forms Validations Plugin -->
-  <script src="assets/js/plugins/jquery.validate.min.js"></script>
+  <script src="{{asset('assets/js/plugins/jquery.validate.min.js')}}"></script>
   <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-  <script src="assets/js/plugins/jquery.bootstrap-wizard.js"></script>
-  <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-  <script src="assets/js/plugins/bootstrap-selectpicker.js"></script>
+  <script src="{{asset('assets/js/plugins/jquery.bootstrap-wizard.js')}}"></script>
+  <!--  Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+  <script src="{{asset('assets/js/plugins/bootstrap-selectpicker.js')}}"></script>
   <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-  <script src="assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+  <script src="{{asset('assets/js/plugins/bootstrap-datetimepicker.min.js')}}"></script>
   <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
-  <script src="assets/js/plugins/jquery.dataTables.min.js"></script>
-  <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-  <script src="assets/js/plugins/bootstrap-tagsinput.js"></script>
+  <script src="{{asset('assets/js/plugins/jquery.dataTables.min.js')}}"></script>
+  <!--  Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+  <script src="{{asset('assets/js/plugins/bootstrap-tagsinput.js')}}"></script>
   <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-  <script src="assets/js/plugins/jasny-bootstrap.min.js"></script>
+  <script src="{{asset('assets/js/plugins/jasny-bootstrap.min.js')}}"></script>
   <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-  <script src="assets/js/plugins/fullcalendar.min.js"></script>
+  <script src="{{asset('assets/js/plugins/fullcalendar.min.js')}}"></script>
   <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-  <script src="assets/js/plugins/jquery-jvectormap.js"></script>
+  <script src="{{asset('assets/js/plugins/jquery-jvectormap.js')}}"></script>
   <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="assets/js/plugins/nouislider.min.js"></script>
+  <script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script>
   <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
   <!-- Library for adding dinamically elements -->
-  <script src="assets/js/plugins/arrive.min.js"></script>
+  <script src="{{asset('assets/js/plugins/arrive.min.js')}}"></script>
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chartist JS -->
-  <script src="assets/js/plugins/chartist.min.js"></script>
+  <script src="{{asset('assets/js/plugins/chartist.min.js')}}"></script>
   <!--  Notifications Plugin    -->
-  <script src="assets/js/plugins/bootstrap-notify.js"></script>
+  <script src="{{asset('assets/js/plugins/bootstrap-notify.js')}}"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+  <script src="{{asset('assets/js/material-dashboard.js?v=2.1.2')}}" type="text/javascript"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-  <script src="assets/demo/demo.js"></script>
+  <script src="{{asset('assets/demo/demo.js')}}"></script>
   <script>
     $(document).ready(function() {
       $().ready(function() {

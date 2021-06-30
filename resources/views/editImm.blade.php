@@ -91,29 +91,37 @@
                                 @guest
                                     <li><a href="/connecter">Se Connecter</a></li>
                                 @else
+                                  @if(auth()->user()->is_admin == 1)
+                                    <li class="has-children">
+                                        <a href="/profile"><img src="{{ Auth::user()->profile_image }}" width="60px"
+                                                style="border-radius: 50%;height: 40px; width: 40px "> </a>
+                                        <ul class="dropdown arrow-top">
+                                             <li><a href="/dashboard">Dashboard</a></li>
+                                            <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Deconnexion</a>
+                                            </li>
+                                            <form id="logout-form" action="{{ route('logout') }}"
+                                                method="POST" class="d-none">
+                                                @csrf
+                                            </form> 
+                                        </ul>
+                                    </li>
+                                     @else
                                     <li class="has-children">
                                         <a href="/profile"><img src="{{ Auth::user()->profile_image }}" width="60px"
                                                 style="border-radius: 50%;height: 40px; width: 40px "> </a>
                                         <ul class="dropdown arrow-top">
                                             <li><a href="/profile">Profile</a></li>
                                             <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">Déconnexion</a>
+                                                     document.getElementById('logout-form').submit();">Deconnexion</a>
                                             </li>
-
-
                                             <form id="logout-form" action="{{ route('logout') }}"
                                                 method="POST" class="d-none">
                                                 @csrf
-                                            </form>
-                                            <!--  <li><a href="#">Commercial Building</a></li>
-                      <li class="has-children">
-                        <a href="#">Sub Menu</a>
-                        <ul class="dropdown">
-                          <li><a href="#">Menu One</a></li>
-                          <li><a href="#">Menu Two</a></li>
-                          <li><a href="#">Menu Three</a></li>-->
+                                            </form> 
                                         </ul>
                                     </li>
+                                   @endif
                                 @endguest
                             </ul>
                         </nav>

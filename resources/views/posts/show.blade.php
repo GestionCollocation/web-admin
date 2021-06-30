@@ -68,7 +68,11 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-
+<style type="text/css">
+    .date {
+        font-size: 12px;
+    }
+</style>
 
     <!-- Comments -->
 
@@ -239,28 +243,29 @@
                         <div class="comment">
                             <div class="comment-list">
                                 <div class="single-comment justify-content-between d-flex">
-                                    <div class="user justify-content-between d-flex">
+                                    <div class="user justify-content-between d-flex" style="background-color:#fafafa !important;border-radius: 30px;padding: 5px; padding-left: 7px; margin-bottom: 5px;">
                                         <div class="thumb">
                                             <img src="{{ URL::asset($item->user->profile_image) }}" alt=""
                                                 style="border-radius: 50%; height: 35px; width: 35px" />
                                             <img src="" alt="" />
                                         </div>
                                         <div class="desc">
-                                            <h5><a href="#">{{ $item->user->name }}</a></h5>
+                                            <h5><a href="#" style="font-size:16px;">{{ $item->user->name }}</a></h5>
                                             <p class="date">
                                                 {{ $item->created_at->format('D, d M Y H:i') }}
-                                            </p>
-                                            <p class="comment"
-                                                style="background-color: #DCDCDC; border-radius: 10px; ">
+<br>
+                                                <p class="comment">
                                                 &nbsp; &nbsp; &nbsp; {{ $item->contenue }}
                                             </p>
+                                            </p>
+                                            
 
-                                            <div class="col" style="margin-top: 5px">
+                                            <div class="col">
                                                 @if($item->user->id==Auth::id())
 
                                                     <a
                                                         href="{{ route('comments.destroy',$item->id) }}"><i
-                                                            class="fas fa-tra" style="color: #007bff;">supprimer
+                                                            class="fas fa-tra" style="color: #007bff;font-size: 12px;">supprimer
                                                         </i></a>
                                                     &nbsp; &nbsp;
 
@@ -269,7 +274,7 @@
                                                     <a type="button" data-toggle="modal"
                                                         data-target="#ModifyComment{{ $item->id }}"
                                                         data-whatever="@mdo"><i class="fas fa-tra"
-                                                            style="color: #007bff; cursor: pointer;"> modifier</i></a>
+                                                            style="color: #007bff; cursor: pointer;font-size: 12px;"> modifier</i></a>
 
 
 
@@ -282,10 +287,10 @@
                                                     </a>
                                                 @endif
 
-                                                <a style="border: none; background-color: white; cursor: pointer;"
+                                                <a style="cursor: pointer;"
                                                     id="rep"
                                                     onclick="showReplyForm('{{ $item->id }}','{{ $item->user->name }}')"><i
-                                                        class="fas fa-reply" style="color: #007bff;">repondre</i> </a>
+                                                        class="fas fa-reply" style="color: #007bff;font-size: 12px;">repondre</i> </a>
 
 
                                             </div>
@@ -302,7 +307,7 @@
 
 
                             @foreach($item->reponse as $reply)
-                                <div class="comment-list left-padding">
+                                <div class="comment-list" style="margin-left: 50px; padding: 7px;">
                                     <div class="single-comment justify-content-between d-flex">
                                         <div class="user justify-content-between d-flex">
                                             <div class="thumb">
@@ -312,14 +317,14 @@
                                                 <img src="img/asset/c3.jpg" alt="" />
                                             </div>
                                             <div class="desc">
-                                                <h5><a href="#">{{ $reply->user->name }}</a></h5>
-                                                <p class="date">
-                                                    {{ $reply->created_at->format('D, d M Y H:i') }}
+                                                <a href="#" style="font-size:17px;">{{ $reply->user->name }}</a><p class="date">
+                                                    {{ $reply->created_at->format('D, d M Y H:i') }} <br>
+                                                    <p class="comment">
+                                                    &nbsp;&nbsp;&nbsp;{{ $reply->contenue }}
                                                 </p>
-                                                <p class="comment"
-                                                    style="background-color: #DCDCDC; border-radius: 10px; float: left; display: inline-block;">
-                                                    &nbsp;&nbsp;&nbsp; {{ $reply->contenue }}
                                                 </p>
+                                                
+                                                
 
 
 
@@ -327,7 +332,7 @@
 
                                                     <a
                                                         href="{{ route('comments.destroy',$reply->id) }}"><i
-                                                            class="fas fa-tra" style="color: #007bff;">supprimer
+                                                            class="fas fa-tra" style="color: #007bff;font-size: 12px;">supprimer
                                                         </i></a>
 
                                                     <!--  <a  href="{{ route('post.show',[0,$reply->id]) }}" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style=""> -->
@@ -335,7 +340,7 @@
                                                     <a type="button" data-toggle="modal"
                                                         data-target="#ModifyComment{{ $reply->id }}"
                                                         data-whatever="@mdo"><i class="fas fa-tra"
-                                                            style="color: #007bff; cursor: pointer;"> modifier</i></a>
+                                                            style="color: #007bff; cursor: pointer;font-size: 12px;"> modifier</i></a>
 
 
                                                 </div>

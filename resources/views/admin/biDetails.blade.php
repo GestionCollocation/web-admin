@@ -120,17 +120,18 @@
 <div class="content-fluid pr-4 pl-4 pt-3" >
   
   <h2>Détails du bien immobilier</h2>
-
+   @include('modal.deleteBiAdmin')
   <h3>Posté par :</h3>
   <div class="row" >
       <div class="col-12">
         <div class="row p-2" >
             <div class="col-1">
-              <img src="http://127.0.0.1:8000/uploads/f0Lie6nbk51622571394_1.png" alt="" style=" border-radius: 50%; width: 40px; height: 40px; "> 
+
+              <img src="{{ URL::asset($bien->user->profile_image) }}" alt="" style=" border-radius: 50%; width: 40px; height: 40px; "> 
             </div>
             <div class="col-11">
-                <span><a href="" style="color: rgb(4,81,142) ; font-weight : bold"> Smiya kniya</a></span><br>
-                <span>Email@gmail.com / id : 1</span>
+                <span><a href="" style="color: rgb(4,81,142) ; font-weight : bold"> {{$bien->user->name}}</a></span><br>
+                <span>{{$bien->user->email}}/ id : {{$bien->user->id}}</span>
             </div>
         </div>
       </div>
@@ -141,20 +142,24 @@
       
     <div class="col-12  ">
         <div class="card " style="width : 95% !important" >
-          <img class="card-img-top"  src="https://www.montgomeryhomes.com.au/wp-content/uploads/2020/11/facade-coolum-display-home-Coolum-Leppington.jpg" alt="Card image cap">
+          @php
+              $photos = json_decode($bien->images);
+          @endphp
+             
+          <img class="card-img-top"  src="{{ asset('uploads/'.$photos[0]) }}" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title" style="font-size: 30px">bien immobilier titre</h5>
+            <h5 class="card-title" style="font-size: 30px">{{$bien->titre}}</h5>
             <div class="card-text">
               <span class="material-icons" style="color: grey ; height : 50% ">
                 location_on
                 </span>
-                <span>Fes,Morocco</span>
+                <span>{{$bien->ville}},{{$bien->quartier}}</span>
                   <br>
                  <h3>Description</h3>
-                  <p style="text-align: justify">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet ex consequuntur ab, at commodi vel harum. Quae soluta id exercitationem, minus rem, est excepturi odit tempore tempora ad, nulla repellendus!</p>
+                  <p style="text-align: justify">{{$bien->description}}</p>
                <br><br>
                <span style="background-color : rgb(175, 245, 189) ; color : rgb(41,195,72) ; border: 2px solid rgb(175, 245, 189);
-                border-radius: 5px; padding : 0.3em  ;font-weight : bold ; font-size : 2em">300 DH</span>
+                border-radius: 5px; padding : 0.3em  ;font-weight : bold ; font-size : 2em">{{$bien->prix}} DH</span>
                 <br>
                 <br>
   
@@ -162,16 +167,16 @@
                   <div class="col-4">
                     <span style="text-transform: uppercase ; color : grey ; font-size : 1.2em">chambres</span>
                     <br>
-                    <span style="font-weight : bold ; font-size : 1.5em ; color :rgb(4,81,142)">45</span>
+                    <span style="font-weight : bold ; font-size : 1.5em ; color :rgb(4,81,142)">{{$bien->nb_chambres}}</span>
                   </div>
                   <div class="col-4">
                       <span style="text-transform: uppercase ; color : grey ; font-size : 1.2em">  personnes</span>
                      <br>
-                      <span style="font-weight : bold ; font-size : 1.5em ; color :rgb(4,81,142)">12</span></div>
+                      <span style="font-weight : bold ; font-size : 1.5em ; color :rgb(4,81,142)">{{$bien->nb_personnes}}</span></div>
                   <div class="col-4">
                     <span style="text-transform: uppercase ; color : grey ; font-size : 1.2em">superficie</span>
                     <br>
-                    <span style="font-weight : bold ; font-size : 1.5em ; color :rgb(4,81,142)">120 m</span>
+                    <span style="font-weight : bold ; font-size : 1.5em ; color :rgb(4,81,142)">{{$bien->superficie}} m</span>
                     </div>
                 </div>
       
@@ -179,31 +184,21 @@
          <br>
             <h3>Gallerie</h3>
             <div class="row">
-                <div class="col-md-2 col-sm-4">
-                    <img class="card-img-top"  src="https://www.montgomeryhomes.com.au/wp-content/uploads/2020/11/facade-coolum-display-home-Coolum-Leppington.jpg" alt="Card image cap">
-                </div>
-                <div class="col-md-2 col-sm-4">
-                    <img class="card-img-top"  src="https://www.montgomeryhomes.com.au/wp-content/uploads/2020/11/facade-coolum-display-home-Coolum-Leppington.jpg" alt="Card image cap">
-                </div>
-                <div class="col-md-2 col-sm-4">
-                    <img class="card-img-top"  src="https://www.montgomeryhomes.com.au/wp-content/uploads/2020/11/facade-coolum-display-home-Coolum-Leppington.jpg" alt="Card image cap">
-                </div>
-                <div class="col-md-2 col-sm-4">
-                    <img class="card-img-top"  src="https://www.montgomeryhomes.com.au/wp-content/uploads/2020/11/facade-coolum-display-home-Coolum-Leppington.jpg" alt="Card image cap">
-                </div>
-                <div class="col-md-2 col-sm-4">
-                    <img class="card-img-top"  src="https://www.montgomeryhomes.com.au/wp-content/uploads/2020/11/facade-coolum-display-home-Coolum-Leppington.jpg" alt="Card image cap">
-                </div>
-                <div class="col-md-2 col-sm-4">
-                    <img class="card-img-top"  src="https://www.montgomeryhomes.com.au/wp-content/uploads/2020/11/facade-coolum-display-home-Coolum-Leppington.jpg" alt="Card image cap">
-                </div>
-                <div class="col-md-2 col-sm-4">
-                    <img class="card-img-top"  src="https://www.montgomeryhomes.com.au/wp-content/uploads/2020/11/facade-coolum-display-home-Coolum-Leppington.jpg" alt="Card image cap">
-                </div>
+                @foreach(json_decode($bien->images) as $photo)
+                                
+                               <div class="col-md-2 col-sm-4">
+                                    <img class="card-img-top"  src="{{ asset('uploads/'.$photo) }}" alt="Card image cap" style="height : 100px;">
+                              </div>
+           
+
+                @endforeach
+
             </div>
+              
             <br><br>
-            <a href="#" class="btn" style="background-color: rgb(4,81,142)">Modifer</a>
-            <a href="#" class="btn" style="background-color: rgb(214, 44, 44)">Supprimer</a>
+           
+            <a  class="btn" data-toggle="modal" data-target="#deleteBien{{$bien->id}}" style="background-color: rgb(214, 44, 44) ; color: white">Supprimer</a>
+
           </div>
         </div>
   
@@ -214,48 +209,48 @@
   </div>
 
   <!--   Core JS Files   -->
-  <script src="assets/js/core/jquery.min.js"></script>
-  <script src="assets/js/core/popper.min.js"></script>
-  <script src="assets/js/core/bootstrap-material-design.min.js"></script>
-  <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+ <script src="{{asset('assets/js/core/jquery.min.js')}}"></script>
+  <script src="{{asset('assets/js/core/popper.min.js')}}"></script>
+  <script src="{{asset('assets/js/core/bootstrap-material-design.min.js')}}"></script>
+  <script src="{{asset('assets/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
   <!-- Plugin for the momentJs  -->
-  <script src="assets/js/plugins/moment.min.js"></script>
+  <script src="{{asset('assets/js/plugins/moment.min.js')}}"></script>
   <!--  Plugin for Sweet Alert -->
-  <script src="assets/js/plugins/sweetalert2.js"></script>
+  <script src="{{asset('assets/js/plugins/sweetalert2.js')}}"></script>
   <!-- Forms Validations Plugin -->
-  <script src="assets/js/plugins/jquery.validate.min.js"></script>
+  <script src="{{asset('assets/js/plugins/jquery.validate.min.js')}}"></script>
   <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-  <script src="assets/js/plugins/jquery.bootstrap-wizard.js"></script>
-  <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-  <script src="assets/js/plugins/bootstrap-selectpicker.js"></script>
+  <script src="{{asset('assets/js/plugins/jquery.bootstrap-wizard.js')}}"></script>
+  <!--  Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+  <script src="{{asset('assets/js/plugins/bootstrap-selectpicker.js')}}"></script>
   <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-  <script src="assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+  <script src="{{asset('assets/js/plugins/bootstrap-datetimepicker.min.js')}}"></script>
   <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
-  <script src="assets/js/plugins/jquery.dataTables.min.js"></script>
-  <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-  <script src="assets/js/plugins/bootstrap-tagsinput.js"></script>
+  <script src="{{asset('assets/js/plugins/jquery.dataTables.min.js')}}"></script>
+  <!--  Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+  <script src="{{asset('assets/js/plugins/bootstrap-tagsinput.js')}}"></script>
   <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-  <script src="assets/js/plugins/jasny-bootstrap.min.js"></script>
+  <script src="{{asset('assets/js/plugins/jasny-bootstrap.min.js')}}"></script>
   <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-  <script src="assets/js/plugins/fullcalendar.min.js"></script>
+  <script src="{{asset('assets/js/plugins/fullcalendar.min.js')}}"></script>
   <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-  <script src="assets/js/plugins/jquery-jvectormap.js"></script>
+  <script src="{{asset('assets/js/plugins/jquery-jvectormap.js')}}"></script>
   <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="assets/js/plugins/nouislider.min.js"></script>
+  <script src="{{asset('assets/js/plugins/nouislider.min.js')}}"></script>
   <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
   <!-- Library for adding dinamically elements -->
-  <script src="assets/js/plugins/arrive.min.js"></script>
+  <script src="{{asset('assets/js/plugins/arrive.min.js')}}"></script>
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chartist JS -->
-  <script src="assets/js/plugins/chartist.min.js"></script>
+  <script src="{{asset('assets/js/plugins/chartist.min.js')}}"></script>
   <!--  Notifications Plugin    -->
-  <script src="assets/js/plugins/bootstrap-notify.js"></script>
+  <script src="{{asset('assets/js/plugins/bootstrap-notify.js')}}"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+  <script src="{{asset('assets/js/material-dashboard.js?v=2.1.2')}}" type="text/javascript"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-  <script src="assets/demo/demo.js"></script>
+  <script src="{{asset('assets/demo/demo.js')}}"></script>
   <script>
     $(document).ready(function() {
       $().ready(function() {

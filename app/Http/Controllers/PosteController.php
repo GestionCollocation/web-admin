@@ -181,6 +181,12 @@ public function indexAdmin(){
 
 
 }
+
+  public function poste_admin()
+    {
+          $posts= Poste::latest()->paginate(4);
+        return view('admin.annonce')->with('posts',$posts);  
+    }
     
 }
 

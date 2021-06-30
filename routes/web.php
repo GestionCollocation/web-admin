@@ -53,16 +53,13 @@ Route::get('/bienImmobilier', function () {
 Route::get('/admin/annonce', function () {
     return view('admin.annonce');
 });
-
 Route::get('/admin/profile', function () {
     return view('admin.profile');
 });
-
-Route::get('/admin/biDetails', function () {
-    return view('admin.biDetails');
-});
-
-Route::get('/admin/userProfile', function () {
+// Route::get('/admin/details', function () {
+//     return view('admin.biDetails');
+// });
+Route::get('/admin/profileUser', function () {
     return view('admin.userProfile');
 });
 Auth::routes();
@@ -167,3 +164,15 @@ Route::get('/dashboard', [App\Http\Controllers\PosteController::class, 'indexAdm
 Route::get('/user/destroy/{id}','App\Http\Controllers\UserController@destroy')->name('user.destroy');
 // supprimer Bien Immobiler par admin
 Route::get('/bi/destroy/{id}','App\Http\Controllers\BienImmobilierController@destroy')->name('bi.destroy');
+//users 
+Route::get('/admin/user','App\Http\Controllers\UserController@index_admin')->name('userAdmin');
+//bi 
+Route::get('/admin/bi','App\Http\Controllers\BienImmobilierController@bi_admin')->name('biAdmin');
+
+Route::get('/admin/annonces','App\Http\Controllers\PosteController@poste_admin')->name('posteAdmin');
+
+Route::get('/admin/detailsBi/{id}','App\Http\Controllers\BienImmobilierController@show_admin')->name('detailsAdmin');
+
+
+
+Route::put('/update/admin/{id}','App\Http\Controllers\UserController@update_admin')->name('update.admin');

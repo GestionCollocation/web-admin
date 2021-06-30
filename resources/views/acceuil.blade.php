@@ -2,6 +2,12 @@
 <html lang="en">
 
 <head>
+
+<style>
+    body {
+        
+    }
+</style>
     <title>Location</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,18 +20,18 @@
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/mediaelementplayer.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-    <link rel="stylesheet" href="css/fl-bigmug-line.css">
-    <link rel="stylesheet" href="css/aos.css">
-    <link rel="stylesheet" href="css/style.css">
+     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/mediaelementplayer.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('fonts/flaticon/font/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fl-bigmug-line.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -78,13 +84,6 @@
                                     <ul class="dropdown arrow-top">
                                         <li><a href="/create">Bien Immobilier</a></li>
                                         <li><a href="/CreerPoste">Poste</a></li>
-                                        <!--  <li><a href="#">Commercial Building</a></li>
-                      <li class="has-children">
-                        <a href="#">Sub Menu</a>
-                        <ul class="dropdown">
-                          <li><a href="#">Menu One</a></li>
-                          <li><a href="#">Menu Two</a></li>
-                          <li><a href="#">Menu Three</a></li>-->
                                     </ul>
                                 </li>
 
@@ -102,7 +101,6 @@
                                         <a href="/profile"><img src="{{ Auth::user()->profile_image }}" width="60px"
                                                 style="border-radius: 50%;height: 40px; width: 40px "> </a>
                                         <ul class="dropdown arrow-top">
-                                            <li><a href="/profile">Profile</a></li>
                                              <li><a href="/dashboard">Dashboard</a></li>
                                             <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">Deconnexion</a>
@@ -292,11 +290,23 @@
                                 <img src="{{ asset('uploads/'.$photos[0]) }}" alt="Image"
                                     height="220px;" width="400px;">
                             </a>
+
+                            <div class="dropdown" style="margin-right: 0px">
+  <a  data-toggle="dropdown" class="property-favorite" >
+    <span id="iluke"><i class="fas fa-share"></i></span>
+  </a>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="{{ route('post.partage',$item->id) }}">Sur le site</a>
+    <a class="dropdown-item" href="#">Faceboock</a>
+    <a class="dropdown-item" href="#">Instagram</a>
+  </div>
+</div>           
+                    
+                             
+                               
                             <div class="p-4 property-body">
-                                <!--icon-heart nous mène en haut de la page seulement-->
-                                <a href="{{ route('post.partage',$item->id) }}"
-                                    class="property-favorite"><span id="iluke"><i class="fas fa-share"></i></span></a>
-                                <h2 class="property-title"><a
+                            
+                                
                                         href="{{ route('acceuil.show',$item->id) }}">{{ $item->titre }}</a>
                                 </h2>
 
@@ -362,7 +372,9 @@
     <div class="row mb-5">
 
              @foreach($bienimmobilier as $item)
-
+<script>
+    console.log({{$item->id}})
+</script>
                     <div class="col-md-6 col-lg-4 mb-4">
                         <div class="property-entry h-100">
                             <a href="{{ route('acceuil.show',$item->id) }}"
@@ -379,10 +391,33 @@
                                 <img src="{{ asset('uploads/'.$photos[0]) }}" alt="Image"
                                     height="220px;" width="400px;">
                             </a>
+
+                            <div class="dropdown" style="margin-right: 0px">
+  <a href="" data-toggle="dropdown" class="property-favorite" >
+    <span id="iluke"><i class="fas fa-share"></i></span>
+  </a>
+<!-- hna -->
+
+  <div class="dropdown-menu">
+    <a class="dropdown-item"  href="{{ route('post.partage',$item->id) }}">Sur le site</a>
+    <button class="dropdown-item" id="facebook-btn{{ $item->id}}" onClick="share()">Faceboock</button>
+    <a class="dropdown-item" href="#">Instagram</a>
+  </div>
+</div>    
+        <script type="text/javascript">
+          
+          //  const instagramBtn = document.getElementById('instagram-btn');
+           // const twitterBtn = document.getElementById('twitter-btn');
+
+           function share() {
+            alert(`https://www.facebook.com/sharer.php?u=http://127.0.0.1:8000/acceuil/{{ $item->id }}&text=/{{ $item->title }}`)
+              // location.href = `https://www.facebook.com/sharer.php?u=http://127.0.0.1:8000/acceuil/{{ $item->id }}&text=/{{ $item->title }}` ;
+           }
+        
+        </script>       
                             <div class="p-4 property-body">
-                                <!--icon-heart nous mène en haut de la page seulement-->
-                                <a href="{{ route('post.partage',$item->id) }}"
-                                    class="property-favorite"><span id="iluke"><i class="fas fa-share"></i></span></a>
+     
+                                
                                 <h2 class="property-title"><a
                                         href="{{ route('acceuil.show',$item->id) }}">{{ $item->titre }}</a>
                                 </h2>
@@ -420,6 +455,7 @@
                             </div>
                         </div>
                     </div>
+                 
                 @endforeach
 
 
@@ -711,21 +747,21 @@
 
   
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="js/jquery-ui.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/mediaelement-and-player.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/jquery.countdown.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/bootstrap-datepicker.min.js"></script>
-    <script src="js/aos.js"></script>
+   <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/mediaelement-and-player.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.stellar.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.countdown.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('js/aos.js') }}"></script>
+    <script src="{{ asset('js/circleaudioplayer.js') }}"></script>
 
-    <script src="js/main.js"></script>
-
+    <script src="{{ asset('js/main.js') }}"></script>
 
 
 <script>

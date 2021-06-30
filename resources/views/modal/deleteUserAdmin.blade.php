@@ -10,7 +10,7 @@
         </button>
       </div>
       <div class="modal-body text-center mb-5" style="margin-top: 5px; ">
-        <img src="averr.jpg" class="img-responsive"  style=" max-width: 20%; margin-top: 5px; ">
+        <img src="{{asset('averr.jpg')}}" class="img-responsive"  style=" max-width: 20%; margin-top: 5px; ">
             <h2> Vous ête sûr?</h2>
        Vous ête sûr de supprimer cet uilisateur  
       </div>
