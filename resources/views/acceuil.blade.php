@@ -372,9 +372,7 @@
     <div class="row mb-5">
 
              @foreach($bienimmobilier as $item)
-<script>
-    console.log({{$item->id}})
-</script>
+
                     <div class="col-md-6 col-lg-4 mb-4">
                         <div class="property-entry h-100">
                             <a href="{{ route('acceuil.show',$item->id) }}"
@@ -400,8 +398,8 @@
 
   <div class="dropdown-menu">
     <a class="dropdown-item"  href="{{ route('post.partage',$item->id) }}">Sur le site</a>
-    <button class="dropdown-item" id="facebook-btn{{ $item->id}}" onClick="share()">Faceboock</button>
-    <a class="dropdown-item" href="#">Instagram</a>
+    <button class="dropdown-item" id="facebook-btn{{ $item->id}}" onclick="alert(`https://www.facebook.com/sharer.php?u=http://127.0.0.1:8000/acceuil/{{ $item->id }}&text=/{{ $item->title }}`)">Faceboock</button>
+   
   </div>
 </div>    
         <script type="text/javascript">
