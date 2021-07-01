@@ -205,12 +205,10 @@
                                 <span class="icon icon-arrow_drop_down"></span>
                                 <select name="prix" id="prix" class="form-control d-block rounded-0">
                                     <option Selected>Sélectionnez Prix</option>
-                                    <option value="1500">1500</option>
-                                    <option value="2000">2000</option>
-                                    <option value="2200">2200</option>
-                                    <option value="2500">2500</option>
-                                    <option value="3000">3000</option>
-                                     <option value="3500">3500</option>
+                                    <option value="1500">0 DH-1500 DH</option>
+                                    <option value="3000">1500 DH-3000 DH</option>
+                                     <option value="5000">3000 DH-5000 DH</option>
+                                     <option value="10000">5000 DH - 10000 DH</option>
                                 </select>
                             </div>
                         </div>
@@ -305,8 +303,7 @@
                              
                                
                             <div class="p-4 property-body">
-                            
-                                
+                                <a
                                         href="{{ route('acceuil.show',$item->id) }}">{{ $item->titre }}</a>
                                 </h2>
 

@@ -214,20 +214,35 @@ class BienImmobilierController extends Controller
 
     public function rechercher(Request $request)
     {
-       if(isset($_GET['ville']) && isset($_GET['quartier']) && isset($_GET['prix'])){
 
-      $ville=$_GET['ville'];
-        $quartier=$_GET['quartier'];
-        $prix=$_GET['prix'];
-      $bi=DB::table('bien_immobiliers')->select('bien_immobiliers.*')->where('bien_immobiliers.ville','LIKE','%'.$ville.'%')->where('bien_immobiliers.quartier','LIKE','%'.$quartier.'%')->where('bien_immobiliers.prix','LIKE','%'.$prix.'%')->get(); 
+   
+       if(isset($_GET['ville']) || isset($_GET['quartier']) || isset($_GET['prix'])){
 
-       $v=DB::table('bien_immobiliers')->select('ville')->groupBy('ville')->get(); 
-        $q=DB::table('bien_immobiliers')->select('quartier')->groupBy('quartier')->get(); 
+      $ville=  $_GET['ville'] == 'Sélectionnez ville' ? '' : $_GET['ville'];
+     
+        $quartier= $_GET['quartier'] == 'Sélectionnez quartier' ? ''  : $_GET['quartier'];
+       
+        $prix=$_GET['prix']  == 'Sélectionnez Prix' ? '1000000000000'  : $_GET['prix'];
+        $listInfPrix = array('0','1500','3000','5000','10000') ;
+        
+        
+        $infPrix = !((array_search($prix,$listInfPrix)-1) == '-1') ? $listInfPrix[ array_search($prix,$listInfPrix)-1] :   '0' ;
+     
+      
+    
 
-        // $nouv= BienImmobilier::latest()->limit(3);
+            
+      $bi=DB::table('bien_immobiliers')->select('bien_immobiliers.*')->Where('bien_immobiliers.ville','LIKE','%'.$ville.'%')->Where('bien_immobiliers.quartier','LIKE','%'.$quartier.'%')->Where('bien_immobiliers.prix','>', (int) $infPrix)->Where('bien_immobiliers.prix','<=', (int) $prix)->get(); 
+
+   
+     echo 'ville = ' . $ville .' quartier = ' . $quartier . ' infprix = ' . $infPrix . ' prix = ' . $prix ;
+        $v=DB::table('bien_immobiliers')->select('ville')->groupBy('ville')->get(); 
+         $q=DB::table('bien_immobiliers')->select('quartier')->groupBy('quartier')->get(); 
+
+       $nouv= BienImmobilier::latest()->limit(3);
          $nouv= DB::table('bien_immobiliers')->join('users','users.id' ,'=', 'bien_immobiliers.user_id')->select('bien_immobiliers.*','users.name as name')->orderByDesc('created_at')->limit(3)->get();
       
-        return view('acceuil')->with('nouv',$nouv)->with('ville',$v)->with('quartier',$q)->with('recherche',$bi);
+       return view('acceuil')->with('nouv',$nouv)->with('ville',$v)->with('quartier',$q)->with('recherche',$bi);
 
 
       
