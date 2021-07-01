@@ -167,7 +167,7 @@
             
             
               <div class="row">
-                <div class="col-md-4">
+                <div class="col-12">
                 
                   <div class="form-group">
                     <label class="bmd-label-floating">Sexe</label>
@@ -185,7 +185,7 @@
                  
                 </div>
 
-                   <div class="col-md-8">
+                   <div class="col-12 mt-4">
                   <div class="form-group">
                     <label class="bmd-label-floating">Telephone</label>
                     <input id="telephone" type="text"  class="form-control @error('telephone') is-invalid @enderror"
@@ -226,7 +226,7 @@
                 </div>
                 <div class="col-2 d-flex align-items-end">
                   <div class="input-group-addon ">
-                    <i class="material-icons" id="eye1">
+                    <i class="material-icons" id="eye1" style="cursor: pointer;">
                       visibility
                     </i>
                    
@@ -254,7 +254,7 @@
                 </div>
                 <div class="col-2 d-flex align-items-end">
                   <div class="input-group-addon ">
-                    <i class="material-icons" id="eye2">
+                    <i class="material-icons" id="eye2" style="cursor: pointer;">
                       visibility
                     </i>
                     <script>
@@ -282,7 +282,7 @@
                 </div>
                 <div class="col-2 d-flex align-items-end">
                   <div class="input-group-addon ">
-                    <i class="material-icons" id="eye3">
+                    <i class="material-icons" id="eye3" style="cursor: pointer;">
                       visibility
                     </i>
                     <script>
