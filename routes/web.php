@@ -171,6 +171,10 @@ Route::get('/admin/bi','App\Http\Controllers\BienImmobilierController@bi_admin')
 
 Route::get('/admin/annonces','App\Http\Controllers\PosteController@poste_admin')->name('posteAdmin');
 
+Route::get('admin/support', function () {
+    return view("admin.support") ;
+});
+
 Route::get('/admin/detailsBi/{id}','App\Http\Controllers\BienImmobilierController@show_admin')->name('detailsAdmin');
 
 
