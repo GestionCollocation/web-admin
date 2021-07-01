@@ -398,21 +398,11 @@
 
   <div class="dropdown-menu">
     <a class="dropdown-item"  href="{{ route('post.partage',$item->id) }}">Sur le site</a>
-    <button class="dropdown-item" id="facebook-btn{{ $item->id}}" onclick="alert(`https://www.facebook.com/sharer.php?u=http://127.0.0.1:8000/acceuil/{{ $item->id }}&text=/{{ $item->title }}`)">Faceboock</button>
+    <button class="dropdown-item" id="facebook-btn{{ $item->id}}" onclick="location.href = `https://www.facebook.com/sharer.php?u=http://127.0.0.1:8000/acceuil/{{ $item->id }}&text=/{{ $item->title }}`">Faceboock</button>
    
   </div>
 </div>    
-        <script type="text/javascript">
-          
-          //  const instagramBtn = document.getElementById('instagram-btn');
-           // const twitterBtn = document.getElementById('twitter-btn');
-
-           function share() {
-            alert(`https://www.facebook.com/sharer.php?u=http://127.0.0.1:8000/acceuil/{{ $item->id }}&text=/{{ $item->title }}`)
-              // location.href = `https://www.facebook.com/sharer.php?u=http://127.0.0.1:8000/acceuil/{{ $item->id }}&text=/{{ $item->title }}` ;
-           }
-        
-        </script>       
+           
                             <div class="p-4 property-body">
      
                                 
