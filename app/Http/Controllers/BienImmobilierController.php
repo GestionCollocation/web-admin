@@ -235,7 +235,7 @@ class BienImmobilierController extends Controller
       $bi=DB::table('bien_immobiliers')->select('bien_immobiliers.*')->Where('bien_immobiliers.ville','LIKE','%'.$ville.'%')->Where('bien_immobiliers.quartier','LIKE','%'.$quartier.'%')->Where('bien_immobiliers.prix','>', (int) $infPrix)->Where('bien_immobiliers.prix','<=', (int) $prix)->get(); 
 
    
-     echo 'ville = ' . $ville .' quartier = ' . $quartier . ' infprix = ' . $infPrix . ' prix = ' . $prix ;
+   //  echo 'ville = ' . $ville .' quartier = ' . $quartier . ' infprix = ' . $infPrix . ' prix = ' . $prix ;
         $v=DB::table('bien_immobiliers')->select('ville')->groupBy('ville')->get(); 
          $q=DB::table('bien_immobiliers')->select('quartier')->groupBy('quartier')->get(); 
 
