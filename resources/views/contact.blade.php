@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Homeland</title>
+    <title>Location</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -47,7 +47,7 @@
             <div class="container py-1">
                 <div class="row align-items-center">
                     <div class="col-8 col-md-8 col-lg-4">
-                        <h1 class="mb-0"><a href="/" class="text-white h2 mb-0"><strong>Homeland<span
+                        <h1 class="mb-0"><a href="/" class="text-white h2 mb-0"><strong>Location<span
                                         class="text-danger">.</span></strong></a></h1>
                     </div>
                     <div class="col-4 col-md-4 col-lg-8">
@@ -143,26 +143,33 @@
 
                 <div class="col-md-12 col-lg-8 mb-5">
 
+<div class="container" style="width: 50%">
+    @if($message= Session::get('success_create'))
+          <div class="alert alert-primary" role="alert">
+                {{$message}}
+         </div>
+    @endif
+</div>
 
-
-                    <form action="#" class="p-5 bg-white border">
+                    <form action="{{ route('us.store')}}" method="POST"  class="p-5 bg-white border">
+                         @csrf
 
                         <div class="row form-group">
                             <div class="col-md-12 mb-3 mb-md-0">
-                                <label class="font-weight-bold" for="fullname">Full Name</label>
-                                <input type="text" id="fullname" class="form-control" placeholder="Full Name">
+                                <label class="font-weight-bold" for="fullname">Nom</label>
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Nom">
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label class="font-weight-bold" for="email">Email</label>
-                                <input type="email" id="email" class="form-control" placeholder="Email Address">
+                                <input type="email" id="email" name="email" class="form-control" placeholder="Email Address">
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label class="font-weight-bold" for="email">Subject</label>
-                                <input type="text" id="subject" class="form-control" placeholder="Enter Subject">
+                                <input type="text" id="subject" name="subject" class="form-control" placeholder="Enter Subject">
                             </div>
                         </div>
 
@@ -170,14 +177,14 @@
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label class="font-weight-bold" for="message">Message</label>
-                                <textarea name="message" id="message" cols="30" rows="5" class="form-control"
+                                <textarea  id="message" name="message" cols="30" rows="5" class="form-control"
                                     placeholder="Say hello to us"></textarea>
                             </div>
                         </div>
 
                         <div class="row form-group">
                             <div class="col-md-12">
-                                <input type="submit" value="Send Message" class="btn btn-primary  py-2 px-4 rounded-0">
+                                <button type="submit"  class="btn btn-primary  py-2 px-4 rounded-0">Envoyer Message</button>
                             </div>
                         </div>
 
@@ -204,90 +211,6 @@
         </div>
     </div>
 
-    <div class="site-section bg-light">
-        <div class="container">
-            <div class="row mb-5 justify-content-center">
-                <div class="col-md-7">
-                    <div class="site-section-title text-center">
-                        <h2>Our Agents</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero magnam officiis ipsa eum
-                            pariatur labore fugit amet eaque iure vitae, repellendus laborum in modi reiciendis quis!
-                            Optio minima quibusdam, laboriosam.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-lg-4 mb-5 mb-lg-5">
-                    <div class="team-member">
-
-                        <img src="images/person_1.jpg" alt="Image" class="img-fluid rounded mb-4">
-
-                        <div class="text">
-
-                            <h2 class="mb-2 font-weight-light text-black h4">Megan Smith</h2>
-                            <span class="d-block mb-3 text-white-opacity-05">Real Estate Agent</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi dolorem totam non quis
-                                facere blanditiis praesentium est. Totam atque corporis nisi, veniam non. Tempore
-                                cupiditate, vitae minus obcaecati provident beatae!</p>
-                            <p>
-                                <a href="#" class="text-black p-2"><span class="icon-facebook"></span></a>
-                                <a href="#" class="text-black p-2"><span class="icon-twitter"></span></a>
-                                <a href="#" class="text-black p-2"><span class="icon-linkedin"></span></a>
-                            </p>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-5 mb-lg-5">
-                    <div class="team-member">
-
-                        <img src="images/person_2.jpg" alt="Image" class="img-fluid rounded mb-4">
-
-                        <div class="text">
-
-                            <h2 class="mb-2 font-weight-light text-black h4">Brooke Cagle</h2>
-                            <span class="d-block mb-3 text-white-opacity-05">Real Estate Agent</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cumque vitae voluptates
-                                culpa earum similique corrupti itaque veniam doloribus amet perspiciatis recusandae
-                                sequi nihil tenetur ad, modi quos id magni!</p>
-                            <p>
-                                <a href="#" class="text-black p-2"><span class="icon-facebook"></span></a>
-                                <a href="#" class="text-black p-2"><span class="icon-twitter"></span></a>
-                                <a href="#" class="text-black p-2"><span class="icon-linkedin"></span></a>
-                            </p>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-5 mb-lg-5">
-                    <div class="team-member">
-
-                        <img src="images/person_3.jpg" alt="Image" class="img-fluid rounded mb-4">
-
-                        <div class="text">
-
-                            <h2 class="mb-2 font-weight-light text-black h4">Philip Martin</h2>
-                            <span class="d-block mb-3 text-white-opacity-05">Real Estate Agent</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores illo iusto, inventore,
-                                iure dolorum officiis modi repellat nobis, praesentium perspiciatis, explicabo. Atque
-                                cupiditate, voluptates pariatur odit officia libero veniam quo.</p>
-                            <p>
-                                <a href="#" class="text-black p-2"><span class="icon-facebook"></span></a>
-                                <a href="#" class="text-black p-2"><span class="icon-twitter"></span></a>
-                                <a href="#" class="text-black p-2"><span class="icon-linkedin"></span></a>
-                            </p>
-                        </div>
-
-                    </div>
-                </div>
-
-
-
-            </div>
-        </div>
-    </div>
 
 
 

@@ -10,7 +10,7 @@
 
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="{{asset('fonts/icomoon/style.css')}}">
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
@@ -59,7 +59,7 @@
 
 </head>
 
-<body>
+<body style="overflow-x: hidden;">
 
     <div class="site-loader"></div>
 
@@ -75,7 +75,7 @@
             <div class="site-mobile-menu-body"></div>
         </div> <!-- .site-mobile-menu -->
 
-        <div class="site-navbar mt-4">
+        <div class="site-navbar" style="position:static; background-image: url({{ asset('images/hero_bg_2.jpg') }});">
             <div class="container py-1">
                 <div class="row align-items-center">
                     <div class="col-8 col-md-8 col-lg-4">
@@ -125,12 +125,12 @@
                                  @else
                                   @if(auth()->user()->is_admin == 1)
                                     <li class="has-children">
-                                        <a href="/profile"><img src="{{ Auth::user()->profile_image }}" width="60px"
+                                        <a href="/profile"><img src="{{ URL::asset(Auth::user()->profile_image) }}" width="60px"
                                                 style="border-radius: 50%;height: 40px; width: 40px "> </a>
                                         <ul class="dropdown arrow-top">
                                              <li><a href="/dashboard">Dashboard</a></li>
                                             <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">Deconnexion</a>
+                                                     document.getElementById('logout-form').submit();">Déconnexion</a>
                                             </li>
                                             <form id="logout-form" action="{{ route('logout') }}"
                                                 method="POST" class="d-none">
@@ -140,12 +140,12 @@
                                     </li>
                                      @else
                                     <li class="has-children">
-                                        <a href="/profile"><img src="{{ Auth::user()->profile_image }}" width="60px"
+                                        <a href="/profile"><img src="{{ URL::asset(Auth::user()->profile_image) }}" width="60px"
                                                 style="border-radius: 50%;height: 40px; width: 40px "> </a>
                                         <ul class="dropdown arrow-top">
                                             <li><a href="/profile">Profile</a></li>
                                             <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">Deconnexion</a>
+                                                     document.getElementById('logout-form').submit();">Déconnexion</a>
                                             </li>
                                             <form id="logout-form" action="{{ route('logout') }}"
                                                 method="POST" class="d-none">
@@ -159,39 +159,24 @@
                         </nav>
                     </div>
                 </div>
-
-
-
-
-
-
-
             </div>
-        </div>
-    </div>
-
-    <div class="site-blocks-cover inner-page-cover overlay"
-        style="background-image: url({{ asset('images/hero_bg_2.jpg') }});" data-aos="fade"
-        data-stellar-background-ratio="0.5">
-        <div class="container">
-
-            <div class="row align-items-center justify-content-center text-center">
-                <div class="col-md-10">
-                    <h1 class="mb-2">Publier<br>Poste</h1>
-                </div>
-            </div>
+           
         </div>
     </div>
 
 
     
-
+    <div class="row align-items-left justify-content-left text-center m-4">
+                <div class="col-md-5">
+                    <h1 class="mb-2">Publier Poste</h1>
+                </div>
+            </div>
 
     @if(isset($bienImm))
 
-        <div class="site-section">
+        <div class="site-section" style="margin:0;padding:0;">
             <div class="container">
-                <div class="container" style="width: 30% ; margin-top: 50px; margin-bottom: 50px" >
+                <div class="container" style="width: 30% ; margin-bottom: 50px" >
     @if($message= Session::get('success_create'))
           <div class="alert alert-primary" role="alert">
                 {{$message}}
@@ -331,9 +316,9 @@
 
 
 
-        <div class="site-section">
+        <div class="site-section" style="margin:0;padding:0;">
             <div class="container">
-                <div class="container" style="width: 30% ; margin-top: 50px; margin-bottom: 50px" >
+                <div class="container" style="width: 30% ;" >
     @if($message= Session::get('success_create'))
           <div class="alert alert-primary" role="alert">
                 {{$message}}

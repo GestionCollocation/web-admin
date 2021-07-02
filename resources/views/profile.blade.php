@@ -48,7 +48,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
@@ -166,7 +168,7 @@
 
 </head>
 
-<body>
+<body style="overflow-x: hidden;">
     <!--header-W-->
     <div class="site-loader"></div>
     <div class="site-wrap">
@@ -180,7 +182,7 @@
             <div class="site-mobile-menu-body"></div>
         </div> <!-- .site-mobile-menu -->
 
-        <div class="site-navbar mt-4" style="padding-left: 0px; padding-right: 0px;">
+        <div class="site-navbar" style="position:static;  background-image: url(images/hero_bg_1.jpg);">
             <div class="container py-1">
                 <div class="row align-items-center">
                     <div class="col-8 col-md-8 col-lg-4">
@@ -229,30 +231,37 @@
                                 @guest
                                     <li><a href="/connecter">Se Connecter</a></li>
                                 @else
+                                  @if(auth()->user()->is_admin == 1)
                                     <li class="has-children">
                                         <a href="/profile"><img src="{{ Auth::user()->profile_image }}" width="60px"
                                                 style="border-radius: 50%;height: 40px; width: 40px "> </a>
                                         <ul class="dropdown arrow-top">
-
-                                            <li><a href="{{ route('logout') }}"
-                                                    onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">Deconnexion</a>
+                                             <li><a href="/dashboard">Dashboard</a></li>
+                                            <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Déconnexion</a>
                                             </li>
-
-
                                             <form id="logout-form" action="{{ route('logout') }}"
                                                 method="POST" class="d-none">
                                                 @csrf
-                                            </form>
-                                            <!--  <li><a href="#">Commercial Building</a></li>
-                          <li class="has-children">
-                            <a href="#">Sub Menu</a>
-                            <ul class="dropdown">
-                              <li><a href="#">Menu One</a></li>
-                              <li><a href="#">Menu Two</a></li>
-                              <li><a href="#">Menu Three</a></li>-->
+                                            </form> 
                                         </ul>
                                     </li>
+                                     @else
+                                    <li class="has-children">
+                                        <a href="/profile"><img src="{{ Auth::user()->profile_image }}" width="60px"
+                                                style="border-radius: 50%;height: 40px; width: 40px "> </a>
+                                        <ul class="dropdown arrow-top">
+                                            <li><a href="/profile">Profile</a></li>
+                                            <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Déconnexion</a>
+                                            </li>
+                                            <form id="logout-form" action="{{ route('logout') }}"
+                                                method="POST" class="d-none">
+                                                @csrf
+                                            </form> 
+                                        </ul>
+                                    </li>
+                                   @endif
                                 @endguest
                             </ul>
                         </nav>
@@ -263,36 +272,11 @@
             </div>
         </div>
     </div>
-
-    <div class="slide-one-item home-slider owl-carousel">
-        <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(images/hero_bg_2.jpg);"
-            data-aos="fade" data-stellar-background-ratio="0.5">
-            <div class="container">
-                <div class="row align-items-center justify-content-center text-center">
-                    <div class="col-md-10">
-                        <h1 class="mb-2">Profile</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- fin-header-W-->
     <div class="container">
         <div class="main-body">
-
-
-
-
-           
-
             <!-- Breadcrumb -->
-            <nav aria-label="breadcrumb" class="main-breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/">Acceuil</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Profil</li>
-                </ol>
-            </nav>
+            <h4 class="display-4" style="font-size:2.5rem;">Mon Profil</h4>
             <!-- /Breadcrumb -->
 
             <div class="row gutters-sm">
@@ -306,7 +290,7 @@
                                     <h4>{{ Auth::user()->name }}</h4>
                                     <p class="text-muted font-size-sm">{{ Auth::user()->email }}</p>
                                     <a href="{{ route('inbox') }}"><button
-                                            class="btn btn-outline-primary">Message</button></a>
+                                            class="btn btn-outline-primary"><span class="mr-1"><i class="fas fa-inbox"></i></span> Inbox</button></a>
                                 </div>
                             </div>
                         </div>
@@ -438,9 +422,9 @@
     </div>
 
     <!-- part-footer--------------- -->
-    <div class="container">
+    <div class=" card container mt-2 mb-2">
 
-        <h4 class="display-4">Mes Biens Immobiliers</h4><br>
+        <h4 class="display-4" style="font-size:2.5rem;">Mes Biens Immobiliers</h4><br>
         @if(count($bienimm) > 0)
             <div class="row">
                 @foreach($bienimm as $item)
@@ -474,7 +458,7 @@
             </div>
     </div>
 @else
-    <div class="container w-50">
+    <div class="container justify-content-center w-50">
         <div class="alert alert-secondary" role="alert">
             aucun bien immobilier disponible
         </div>
@@ -484,8 +468,8 @@
 
 
 
-    <div class="container">
-        <h4 class="display-4">Mes Annonces</h4><br>
+    <div class="card container mt-2 mb-2">
+        <h4 class="display-4" style="font-size:2.5rem;">Mes Annonces</h4><br>
         <!-- ALERT  -->
 <div class="container" style="width: 30%">
     @if($message= Session::get('success_edit'))

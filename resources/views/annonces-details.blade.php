@@ -97,7 +97,7 @@
                                 @else
                                   @if(auth()->user()->is_admin == 1)
                                     <li class="has-children">
-                                        <a href="/profile"><img src="{{ Auth::user()->profile_image }}" width="60px"
+                                        <a href="/profile"><img src="{{ URL::asset(Auth::user()->profile_image) }}" width="60px"
                                                 style="border-radius: 50%;height: 40px; width: 40px "> </a>
                                         <ul class="dropdown arrow-top">
                                              <li><a href="/dashboard">Dashboard</a></li>

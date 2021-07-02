@@ -171,7 +171,7 @@ public function indexAdmin(){
  
     $post= DB::table('postes')->orderBy('created_at', 'DESC')->limit(5)->get();
     $bienImm= DB::table('bien_immobiliers')->orderBy('created_at', 'DESC')->limit(5)->get();
-    $user= DB::table('users')->where('name', 'not like', '%Admin%')->orderBy('created_at', 'DESC')->limit(5)->get();
+    $user= DB::table('users')->where('is_admin', '!=', 1)->orderBy('created_at', 'DESC')->limit(5)->get();
    $nb_posts= Poste::whereDate('created_at', '=', Carbon::today()->toDateString())->get();
    $nb_users= User::whereDate('created_at', '=', Carbon::today()->toDateString())->get();
    $nb_bienImm= BienImmobilier::whereDate('created_at', '=', Carbon::today()->toDateString())->get();

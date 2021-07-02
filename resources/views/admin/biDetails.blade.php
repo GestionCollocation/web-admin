@@ -23,27 +23,27 @@
   <div class="wrapper ">
     <div class="sidebar" data-color="green" data-background-color="white" data-image="assets/img/sidebar-1.jpg">
      
-      <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
+      <div class="logo"><a href="/" class="simple-text logo-normal">
          location
         </a></div>
-      <div class="sidebar-wrapper">
+  <div class="sidebar-wrapper">
         <ul class="nav">
           
-          <li class="nav-item   ">
+          <li class="nav-item active  ">
             <a class="nav-link" href="/dashboard">
               <i class="material-icons">dashboard</i>
               <p>Tableau du bord</p>
             </a>
           </li>
           <li class="nav-item   ">
-            <a class="nav-link" href="/users">
+            <a class="nav-link" href="/admin/user">
               <i class="material-icons">
                 people
               </i>
               <p>Les utilisateurs</p>
             </a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item ">
             <a class="nav-link" href="/bienImmobilier">
               <i class="material-icons">
                 business
@@ -51,8 +51,8 @@
               <p>Les bien immobiliers</p>
             </a>
           </li>
-          <li class="nav-item  ">
-            <a class="nav-link" href="./tables.html">
+          <li class="nav-item ">
+            <a class="nav-link" href="/admin/annonce">
               <i class="material-icons">
                 article
               </i>
@@ -60,25 +60,34 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
+            <a class="nav-link" href="/admin/profile">
               <i class="material-icons">person</i>
               <p>Profile</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
+            <a class="nav-link" href="/messages">
               <i class="material-icons">
-                info
+                message
               </i>
-              <p>Support</p>
+              <p>Messages</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
+            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            
+
+
+                                            <form id="logout-form" action="{{ route('logout') }}"
+                                                method="POST" class="d-none">
+                                                @csrf
+                                            </form>
+            
               <i class="material-icons">
                 logout
               </i>
-              <p>Disconnecter</p>
+              <p>Déconnecter</p>
             </a>
           </li>
          

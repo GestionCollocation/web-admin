@@ -28,7 +28,7 @@
 
 </head>
 
-<body>
+<body style="overflow-x: hidden;">
 
     <div class="site-loader"></div>
 
@@ -155,8 +155,8 @@
                 {{ csrf_field() }}
 
                 <h3
-                    style="font-weight:bold;background:#FFF;border:1px solid #CCC;padding:5px;margin-top:-50px;width:250px;font-size:25px">
-                    Informations</h3>
+                    style="font-weight:bold;background:#FFF;border:1px solid #CCC;padding:5px;margin-top:-50px;width:20rem;font-size:25px">
+                    Publier un Bien Immobilier</h3>
 
 
                 <!--success-->
@@ -342,7 +342,7 @@
                                                                                     for="exampleFormControlTextarea1">Etat</label>
                                                                                 <select name="etat" class="form-select"
                                                                                     aria-label="Default select example"
-                                                                                    style="display:inline;height:35px;width:335px;">
+                                                                                    style="display:inline;height:35px;width:200px;">
                                                                                     <option selected>Choisir Etat
                                                                                     </option>
                                                                                     <option value="neuf">Neuf</option>
@@ -355,7 +355,7 @@
                                                                                 <select name="statut"
                                                                                     class="form-select"
                                                                                     aria-label="Default select example"
-                                                                                    style="height:35px;width:335px">
+                                                                                    style="height:35px;width:200px">
                                                                                     <option selected>Choisir Statut
                                                                                     </option>
                                                                                     <option value="disponible">

@@ -167,7 +167,7 @@
 
 
         <a class="btn btn-success" href="{{ route('profile.index_1') }}"
-            style="margin-top: 40px ; width: 13%; margin-left: 28px">Tous les postes </a>
+            style="margin-top: 40px ; width: 13%; margin-left: 28px">Retour</a>
         <br> <br>
     </div>
 

@@ -5,6 +5,7 @@ use App\Http\Controllers\SreachController;
 use App\Http\Controllers\PosteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Us;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,14 +26,6 @@ Route::get('/apropos', function () {
     return view('apropos');
 });
 
-Route::get('/contact', function () {
-    return view('contact');
-});
-
-Route::get('/connecter', function () {
-    return view('connecter');
-});
-
 
 Route::get('/CreerPoste', function () {
     return view('CreerPoste');
@@ -42,6 +35,9 @@ Route::get('/create', function () {
 });
 Route::get('/test', function () {
     return view('test');
+});
+Route::get('/connecter', function () {
+    return view('connecter');
 });
 
 Route::get('/users', function () {
@@ -171,12 +167,14 @@ Route::get('/admin/bi','App\Http\Controllers\BienImmobilierController@bi_admin')
 
 Route::get('/admin/annonces','App\Http\Controllers\PosteController@poste_admin')->name('posteAdmin');
 
-Route::get('admin/support', function () {
-    return view("admin.support") ;
-});
-
 Route::get('/admin/detailsBi/{id}','App\Http\Controllers\BienImmobilierController@show_admin')->name('detailsAdmin');
 
 
 
 Route::put('/update/admin/{id}','App\Http\Controllers\UserController@update_admin')->name('update.admin');
+
+// CONTAACT US 
+Route::get('/contact','App\Http\Controllers\UsController@create')->name('us.create');
+Route::post('/us/store','App\Http\Controllers\UsController@store')->name('us.store');
+
+Route::get('/messages','App\Http\Controllers\UsController@index')->name('us.index');

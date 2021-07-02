@@ -23,7 +23,7 @@
   <div class="wrapper ">
     <div class="sidebar" data-color="green" data-background-color="white" data-image="assets/img/sidebar-1.jpg">
      
-      <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
+      <div class="logo"><a href="/" class="simple-text logo-normal">
          location
         </a></div>
       <div class="sidebar-wrapper">
@@ -66,9 +66,9 @@
             </a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/admin/profile">
+            <a class="nav-link" href="/messages">
               <i class="material-icons">
-                info
+                message
               </i>
               <p>Support</p>
             </a>
@@ -120,35 +120,43 @@
 <div class="content-fluid pr-4 pl-4 pt-4" >
     <h2>Les messages recus</h2>
     <div class="row text-align center ">
-        @for ($i = 0; $i < 10; $i++)
+       @foreach($msg as $item)
         <div class="col-md-6 col-sm-12  " >
             <div class="card p-4" style="background-color: white ; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
                <div class="row">
                    <div class="col-10">
-                       <span style="font-weight: bold ; color : rgb(4,81,142)">smiya</span>
+                       <span style="font-weight: bold ; color : rgb(4,81,142)">{{$item->name}}</span>
                        <br>
-                       <span>email@gmail.com</span>
+                       <span>{{$item->email}}</span>
                    </div>
                    <div class="col-2">
-                       <span class=" pull-right">date</span>
+                       <span class=" pull-right" style="width: 150px">{{ \Carbon\Carbon::parse($item->created_at)->format('d-m-Y à H:i')}}</span>
                       
                    </div>
                    <div class="col-12">
-                       <h3 style="font-weight: bold ; color : rgb(41,195,72)">Subject</h3>
+                       <h3 style="font-weight: bold ; color : rgb(41,195,72)">{{$item->subject}}</h3>
                    </div>
        
                    <div class="col-12">
-                       <p style="text-align: justify ; font-size : 80%">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni magnam harum architecto, tempore consequuntur asperiores consectetur labore ut, dicta fugiat suscipit sit itaque aperiam reprehenderit natus rerum! Culpa, alias. Quaerat?</p>
+                       <p style="text-align: justify ; font-size : 80%">{{$item->message}}</p>
                    </div>
+
+                   <!-- <div class="col-2">
+                       <button class="left" style="width: 90px ; right:100px">Supprimer</button>
+                      
+                   </div> -->
                   
                </div>
             </div>
            </div>
-    @endfor
+    @endforeach
     
     
   
-
+<div class="pagination-block" style="align-self: center;align-items: center;position: relative; left:500px;">
+     
+       {!! $msg->links('layouts.paginationlinks') !!}
+    </div>
 
      
     </div>

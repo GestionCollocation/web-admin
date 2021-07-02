@@ -23,7 +23,7 @@
   <div class="wrapper ">
     <div class="sidebar" data-color="green" data-background-color="white" data-image="assets/img/sidebar-1.jpg">
      
-      <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
+      <div class="logo"><a href="/" class="simple-text logo-normal">
          location
         </a></div>
       <div class="sidebar-wrapper">
@@ -36,7 +36,7 @@
             </a>
           </li>
           <li class="nav-item   ">
-            <a class="nav-link" href="/users">
+            <a class="nav-link" href="/admin/user">
               <i class="material-icons">
                 people
               </i>
@@ -66,11 +66,11 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
+            <a class="nav-link" href="/messages">
               <i class="material-icons">
-                info
+                message
               </i>
-              <p>Support</p>
+              <p>Messages</p>
             </a>
           </li>
           <li class="nav-item ">
@@ -167,7 +167,7 @@
             
             
               <div class="row">
-                <div class="col-12">
+                <div class="col-md-4">
                 
                   <div class="form-group">
                     <label class="bmd-label-floating">Sexe</label>
@@ -185,7 +185,7 @@
                  
                 </div>
 
-                   <div class="col-12 mt-4">
+                   <div class="col-md-8">
                   <div class="form-group">
                     <label class="bmd-label-floating">Telephone</label>
                     <input id="telephone" type="text"  class="form-control @error('telephone') is-invalid @enderror"
@@ -226,7 +226,7 @@
                 </div>
                 <div class="col-2 d-flex align-items-end">
                   <div class="input-group-addon ">
-                    <i class="material-icons" id="eye1" style="cursor: pointer;">
+                    <i class="material-icons" id="eye1">
                       visibility
                     </i>
                    
@@ -249,12 +249,12 @@
                 <div class="col-10 ">
                   <div class="form-group">
                     <label class="bmd-label-floating">Nouveau Mot de passe</label>
-                    <input id="password" type="password" class="form-control" name="password">
+                    <input id="pwd2" type="password" class="form-control" name="password">
                   </div>
                 </div>
                 <div class="col-2 d-flex align-items-end">
                   <div class="input-group-addon ">
-                    <i class="material-icons" id="eye2" style="cursor: pointer;">
+                    <i class="material-icons" id="eye2">
                       visibility
                     </i>
                     <script>
@@ -276,13 +276,13 @@
                 <div class="col-10">
                   <div class="form-group">
                     <label class="bmd-label-floating">Confirmation du Nouveau Mot de passe</label>
-                    <input id="password-confirm" type="password" class="form-control"
+                    <input id="pwd3" type="password" class="form-control"
                                                 name="password_confirmation">
                   </div>
                 </div>
                 <div class="col-2 d-flex align-items-end">
                   <div class="input-group-addon ">
-                    <i class="material-icons" id="eye3" style="cursor: pointer;">
+                    <i class="material-icons" id="eye3">
                       visibility
                     </i>
                     <script>

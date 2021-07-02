@@ -3,7 +3,7 @@
 
 <head>
 
-    <title>Homeland &mdash; Colorlib Website Template</title>
+    <title>Edit Profile</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -28,12 +28,11 @@
     <link rel="stylesheet" href="css/style.css">
     <!--  This file has been downloaded from bootdey.com    @bootdey on twitter -->
     <!--  All snippets are MIT license http://bootdey.com/license -->
-    <title>profile edit data and skills - Bootdey.com</title>
     <link href="http://netdna.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
         body {
             background: #f7f7ff;
-            margin-top: 20px;
+           
         }
 
         .card {
@@ -55,23 +54,13 @@
         }
 
     </style>
+      <script src="{{ asset('js/main.js') }}"></script>
 </head>
 
-<body>
+<body style="background-image: url(images/hero_bg_1.jpg);padding:0;margin:0 auto;">
 
-    <!--header-->
-    <div class="site-wrap">
 
-        <div class="site-mobile-menu">
-            <div class="site-mobile-menu-header">
-                <div class="site-mobile-menu-close mt-3">
-                    <span class="icon-close2 js-menu-toggle"></span>
-                </div>
-            </div>
-            <div class="site-mobile-menu-body"></div>
-        </div> <!-- .site-mobile-menu -->
-
-        <div class="site-navbar mt-4">
+<div class="site-navbar m-0 p-0" style="position:relative;">
             <div class="container py-1">
                 <div class="row align-items-center">
                     <div class="col-8 col-md-8 col-lg-4">
@@ -85,8 +74,10 @@
                                     class="site-menu-toggle js-menu-toggle text-white"><span
                                         class="icon-menu h3"></span></a></div>
 
-                            <ul class="site-menu js-clone-nav d-none d-lg-block">
-                                <a href="/">Acceuil</a>
+                            <ul class="site-menu js-clone-nav d-none d-lg-block "
+                                style="padding-right: 0px; padding-left:0px; left: 0px">
+                                <li class="active">
+                                    <a href="/">Acceuil</a>
                                 </li>
 
                                 <li><a href="/annonces">Annonces</a>
@@ -118,6 +109,22 @@
                                 @guest
                                     <li><a href="/connecter">Se Connecter</a></li>
                                 @else
+                                  @if(auth()->user()->is_admin == 1)
+                                    <li class="has-children">
+                                        <a href="/profile"><img src="{{ Auth::user()->profile_image }}" width="60px"
+                                                style="border-radius: 50%;height: 40px; width: 40px "> </a>
+                                        <ul class="dropdown arrow-top">
+                                             <li><a href="/dashboard">Dashboard</a></li>
+                                            <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Déconnexion</a>
+                                            </li>
+                                            <form id="logout-form" action="{{ route('logout') }}"
+                                                method="POST" class="d-none">
+                                                @csrf
+                                            </form> 
+                                        </ul>
+                                    </li>
+                                     @else
                                     <li class="has-children">
                                         <a href="/profile"><img src="{{ Auth::user()->profile_image }}" width="60px"
                                                 style="border-radius: 50%;height: 40px; width: 40px "> </a>
@@ -126,21 +133,13 @@
                                             <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">Déconnexion</a>
                                             </li>
-
-
                                             <form id="logout-form" action="{{ route('logout') }}"
                                                 method="POST" class="d-none">
                                                 @csrf
-                                            </form>
-                                            <!--  <li><a href="#">Commercial Building</a></li>
-                      <li class="has-children">
-                        <a href="#">Sub Menu</a>
-                        <ul class="dropdown">
-                          <li><a href="#">Menu One</a></li>
-                          <li><a href="#">Menu Two</a></li>
-                          <li><a href="#">Menu Three</a></li>-->
+                                            </form> 
                                         </ul>
                                     </li>
+                                   @endif
                                 @endguest
                             </ul>
                         </nav>
@@ -150,22 +149,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(images/hero_bg_2.jpg);"
-        data-aos="fade" data-stellar-background-ratio="0.5">
-        <div class="container">
-            <div class="row align-items-center justify-content-center text-center">
-                <div class="col-md-10">
-                    <h1 class="mb-2">Profile</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- fin  header-->
-    <br>
 
     <div class="container">
         <div class="main-body">
@@ -314,8 +297,8 @@
                 <div class="col-lg-8" method="POST" action="{{ route('register') }}">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('update',Auth::user()->id) }}"
-                                method="POST">
+                            <form   class="lg validate-form" action="{{ route('update',Auth::user()->id) }}"
+                                method="POST" >
                                 <div class="loader-wapper">
                                     @csrf
                                     @method('PUT')
@@ -398,16 +381,19 @@
                                             class="col-md-4 col-form-label text-md-right">{{ __('Telephone') }}</label>
 
                                         <div class="col-md-6">
-                                            <input   type="number"
-                                                class="form-control @error('telephone') is-invalid @enderror" name="telephone"
-                                                value="{{ Auth::user()->telephone }}" >
-                                                
+                                            <input class="form-control @error('telephone') is-invalid @enderror" type="number" name="telephone"   value="{{ Auth::user()->telephone }}" > 
 
+                                             @if($message= Session::get('message'))
+                                                    <div class="alert alert-danger" role="alert">
+                                                   {{$message}}
+                                                 </div>
+                                               @endif                                          
                                             @error('telephone')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
+                                                 
                                         </div>
                                     </div>
 
@@ -465,7 +451,7 @@
 							-->
                                 <div class="form-group row mb-0">
                                     <div class="col-md-6 offset-md-4">
-                                        <button type="submit" class="btn btn-primary" " >
+                                        <button type="submit" class="btn btn-primary"  >
 										{{ __('Modifier') }}
 									</button>
 								</div>

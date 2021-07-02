@@ -60,7 +60,7 @@ class UserController extends Controller
     }
     public function index_admin()
     {
-          $posts= DB::table('users')->where('name', 'not like', '%Admin%')->orderBy('created_at', 'DESC')->paginate(10);
+          $posts= DB::table('users')->where('is_admin', '!=', 1)->orderBy('created_at', 'DESC')->paginate(10);
         return view('admin.users')->with('posts',$posts);  
     }
 

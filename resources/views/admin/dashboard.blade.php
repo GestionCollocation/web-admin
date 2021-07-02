@@ -25,7 +25,7 @@
   <div class="wrapper ">
     <div class="sidebar" data-color="green" data-background-color="white" data-image="{{asset('assets/img/sidebar-1.jpg')}}">
      
-      <div class="logo"><a href="#" class="simple-text logo-normal">
+      <div class="logo"><a href="/" class="simple-text logo-normal">
          location
         </a></div>
       <div class="sidebar-wrapper">
@@ -38,7 +38,7 @@
             </a>
           </li>
           <li class="nav-item   ">
-            <a class="nav-link" href="/users">
+            <a class="nav-link" href="/admin/user">
               <i class="material-icons">
                 people
               </i>
@@ -62,17 +62,17 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
+            <a class="nav-link" href="/admin/profile">
               <i class="material-icons">person</i>
               <p>Profile</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
+            <a class="nav-link" href="/messages">
               <i class="material-icons">
-                info
+               message
               </i>
-              <p>Support</p>
+              <p>Messages</p>
             </a>
           </li>
           <li class="nav-item ">
@@ -209,57 +209,6 @@
           </div>
      
 
-                    <div class="row">
-            <div class="col-md-4">
-              <div class="card card-chart">
-                <div class="card-header card-header-success">
-                  <div class="ct-chart" id="dailySalesChart"></div>
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title">Daily Sales</h4>
-                  <p class="card-category">
-                    <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">access_time</i> updated 4 minutes ago
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card card-chart">
-                <div class="card-header card-header-warning">
-                  <div class="ct-chart" id="websiteViewsChart"></div>
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title">Email Subscriptions</h4>
-                  <p class="card-category">Last Campaign Performance</p>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">access_time</i> campaign sent 2 days ago
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card card-chart">
-                <div class="card-header card-header-danger">
-                  <div class="ct-chart" id="completedTasksChart"></div>
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title">Completed Tasks</h4>
-                  <p class="card-category">Last Campaign Performance</p>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">access_time</i> campaign sent 2 days ago
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
 
    <div class="row">
@@ -355,7 +304,7 @@
                 @foreach($user as $tem)
                       <tr>
                        <td style="width: 10%;">
-                         <img src="" alt="" style=" border-radius: 50%; width: 40px; height: 40px; "> 
+                         <img src="{{$tem->profile_image}}" alt="" style=" border-radius: 50%; width: 40px; height: 40px; "> 
                        </td>
                        <td>{{$tem->id}}</td>
                        <td>{{$tem->name}}</td>

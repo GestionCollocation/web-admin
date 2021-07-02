@@ -27,29 +27,24 @@
     <link rel="stylesheet" href="css/style.css">
 
 
-
+ <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png"
-        href="{{ asset('login_page/images/icons/favicon.ico') }}" />
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-        href="{{ asset('login_page/vendor/bootstrap/css/bootstrap.min.css') }}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-        href="{{ asset('login_page/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-        href="{{ asset('login_pageg/vendor/animate/animate.css') }}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-        href="{{ asset('login_page/vendor/css-hamburgers/hamburgers.min.css') }}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-        href="{{ asset('login_page/vendor/select2/select2.min.css') }}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('login_page/css/util.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('login_page/css/main.css') }}">
-    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{{asset('login_page/images/icons/favicon.ico')}}"/>
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('login_page/vendor/bootstrap/css/bootstrap.min.css')}}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('login_page/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('login_pageg/vendor/animate/animate.css')}}">
+<!--===============================================================================================-->  
+    <link rel="stylesheet" type="text/css" href="{{asset('login_page/vendor/css-hamburgers/hamburgers.min.css')}}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('login_page/vendor/select2/select2.min.css')}}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('login_page/css/util.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('login_page/css/main.css')}}">
+<!--===============================================================================================-->
 </head>
 
 <body>
@@ -167,6 +162,14 @@
                                 <span class="login100-form-title">
                                     Member Login
                                 </span>
+<div class="container" style="width: 30%">
+    @if($message= Session::get('error'))
+          <div class="alert alert-primary" role="alert">
+                {{$message}}
+         </div>
+    @endif
+    
+</div>
 
                                 <div class="wrap-input100 validate-input"
                                     data-validate="Valid email is required: ex@abc.xyz">
@@ -186,9 +189,9 @@
                                         <i class="fa fa-envelope" aria-hidden="true"></i>
                                     </span>
                                 </div>
-
+                               
                                 <div class="wrap-input100 validate-input" data-validate="Password is required">
-                                    <input class="input100 form-control @error('password') is-invalid @enderror" type="password" name="password" placeholder="Password" required>
+                                    <input class="input100 form-control"  id="pwd1" type="password" name="password" placeholder="Password" required>
 
 
 
@@ -205,6 +208,30 @@
                                         <i class="fa fa-lock" aria-hidden="true"></i>
                                     </span>
                                 </div>
+                             
+                           <div class="col-2 d-flex align-items-end">
+                  <div class="input-group-addon " style="height: 30px ; pointer-events: cursor;">
+                   <i class="material-icons" id="eye1">
+                      visibility
+                    </i>
+                   
+                  </div>
+                </div>
+                <script>
+                    var pwd1 = false ;
+                  document.getElementById('eye1').onclick = function() {
+                  if(pwd1 == false) {
+                      document.getElementById("pwd1").setAttribute("type" , "text")
+                      pwd1 = !pwd1 
+                  }
+                   
+                    else {
+                        document.getElementById("pwd1").setAttribute("type" , "password")
+                        pwd1 = !pwd1 
+                    }
+                    }
+                </script>
+
 
                                 <div class="container-login100-form-btn">
                                     <button type="submit" class="login100-form-btn">
@@ -283,79 +310,6 @@
     <br> <br> <br><br><br><br>
 
 
-    <footer class="site-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="mb-5">
-                        <h3 class="footer-heading mb-4">À propos de Location</h3>
-                        <p>Cette application Web est destinée à trouver des personnes prêtes à collaborer à la location
-                            si vous êtes ici pour la même raison, alors dépêchez-vous de trouver un colocataire qui vous
-                            comprendra</p>
-                    </div>
-
-
-                    <!--Navigations-->
-                </div>
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <div class="row mb-5">
-                        <div class="col-md-12">
-                            <h3 class="footer-heading mb-4">Navigations</h3>
-                        </div>
-                        <div class="col-md-6 col-lg-6">
-                            <ul class="list-unstyled">
-                                <li><a href="/">Acceuil</a></li>
-                                <li><a href="/annonces">Annonces</a></li>
-
-                                <li><a href="/CreerPoste">Poster</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6 col-lg-6">
-                            <ul class="list-unstyled">
-                                <li><a href="/create">Publier Bien Immobilier</a></li>
-                                <li><a href="/apropos">À propos</a></li>
-
-                                <li><a href="/Contact">Contact</a></li>
-
-                            </ul>
-                        </div>
-                    </div>
-
-
-                </div>
-
-                <!--Follow Us-->
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <h3 class="footer-heading mb-4">Suiviez Nous</h3>
-
-                    <div>
-                        <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-                        <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-                        <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-                        <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
-                    </div>
-                </div>
-            </div>
-
-            <!--copyright-->
-            <div class="row pt-5 mt-5 text-center">
-                <div class="col-md-12">
-                    <p>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script data-cfasync="false"
-                            src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-                        <script>
-                            document.write(new Date().getFullYear());
-
-                        </script> All rights reserved | made with <i class="icon-heart text-danger"
-                            aria-hidden="true"></i> by <a href="#" target="_blank">Im Creative</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </p>
-                </div>
-
-            </div>
-        </div>
-    </footer>
     </div>
 
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -389,7 +343,7 @@
 
     </script>
     <!--===============================================================================================-->
-    <script src="js/main.js"></script>
+    <script src="{{asset('js/main.js')}}"></script>
 
 </body>
 

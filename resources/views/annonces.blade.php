@@ -78,7 +78,25 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
     </script>
-
+<style>
+#search-div{
+    width: 40%;margin: 25px; margin-left: 70px; display: inline-block;padding:2rem;border-radius:2rem;
+}
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  #search-div {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+}
+@media only screen and (max-width: 768px) {
+    #search-div {
+        width:100%;
+        margin:0;
+        border-radius:0;
+    }
+}
+</style>
 </head>
 
 
@@ -96,7 +114,7 @@
         </div> 
         <!-- .site-mobile-menu -->
 
-        <div class="site-navbar mt-4">
+        <div class="site-navbar" style="position:static; background-image: url({{ asset('images/hero_bg_1.jpg') }});">
             <div class="container py-1">
                 <div class="row align-items-center">
                     <div class="col-8 col-md-8 col-lg-4">
@@ -130,95 +148,53 @@
                                 @guest
                                     <li><a href="/connecter">Se Connecter</a></li>
                                 @else
-                                  @if(auth()->user()->is_admin == 1)
                                     <li class="has-children">
-                                        <a href="/profile"><img src="{{ Auth::user()->profile_image }}" width="60px"
-                                                style="border-radius: 50%;height: 40px; width: 40px "> </a>
-                                        <ul class="dropdown arrow-top">
-                                             <li><a href="/dashboard">Dashboard</a></li>
-                                            <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">Deconnexion</a>
-                                            </li>
-                                            <form id="logout-form" action="{{ route('logout') }}"
-                                                method="POST" class="d-none">
-                                                @csrf
-                                            </form> 
-                                        </ul>
-                                    </li>
-                                     @else
-                                    <li class="has-children">
-                                        <a href="/profile"><img src="{{ Auth::user()->profile_image }}" width="60px"
+                                        <a href="/profile"><img src="{{ URL::asset(Auth::user()->profile_image) }}" width="60px"
                                                 style="border-radius: 50%;height: 40px; width: 40px "> </a>
                                         <ul class="dropdown arrow-top">
                                             <li><a href="/profile">Profile</a></li>
                                             <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">Deconnexion</a>
+                                                     document.getElementById('logout-form').submit();">Déconnexion</a>
                                             </li>
+
+
                                             <form id="logout-form" action="{{ route('logout') }}"
                                                 method="POST" class="d-none">
                                                 @csrf
-                                            </form> 
+                                            </form>
+                                         
                                         </ul>
                                     </li>
-                                   @endif
                                 @endguest
                             </ul>
                         </nav>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide-one-item home-slider owl-carousel">
-        <div class="site-blocks-cover overlay" style="background-image: url({{asset('images/hero_bg_1.jpg')}});" data-aos="fade"
-            data-stellar-background-ratio="0.5">
-            <div class="container">
-                <div class="row align-items-center justify-content-center text-center">
-                    <div class="col-md-10">
-                        <!--  <span class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">À Louer</span> -->
-                        <h1 class="mb-2">
-                            <!-- quelque chose -->
-                        </h1>
-                        <p class="mb-5"><strong class="h2 text-success font-weight-bold">
-                                <!-- prix --></strong></p>
-                        <!--  <p><a href="#" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">Voir Details</a></p> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="site-blocks-cover overlay" style="background-image: url({{asset('images/hero_bg_2.jpg')}});" data-aos="fade"
-            data-stellar-background-ratio="0.5">
-            <div class="container">
-                <div class="row align-items-center justify-content-center text-center">
-                    <div class="col-md-10">
-                        <!--  <span class="d-inline-block bg-danger text-white px-3 mb-3 property-offer-type rounded">À Louer</span> -->
-                        <h1 class="mb-2"></h1>
-                        <p class="mb-5"><strong class="h2 text-success font-weight-bold"></strong></p>
-                        <!--  <p><a href="#" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">Voir Details</a></p> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div>
-        <div style="width: 40%;margin: 25px; margin-left: 70px; display: inline-block;">
+            </div>  
+            <div id="search-div">
             <h4>Cherchez Location</h4>
             <hr>
             <form action="{{ route('web.search') }}" method="GET">
                 <div class="form-group">
                     <div style="display: flex; flex-direction: row;">
-                        <input type="text" class="form-control" name="query" placeholder="Recherchez  ici ....">&nbsp;
-                        <button type="submit" class="btn btn-primary" style="height: 38px;"> <i class="fas fa-search"
+                        <input type="text" class="form-control" name="query" style="background-color:transparent;" placeholder="rechercher...">
+                        <button type="submit" class="btn btn-primary" style="height: 38px;background-color:transparent; border:none;"> <i class="fas fa-search"
                                 style="font-size: 25px ; "></i></button>
                     </div>
                 </div>
             </form>
         </div>
+        </div>  
+      
+    </div>
+
+   
+    <div class="container mt-5">
+        
         <!-- AFFICHAGE DES POSTE  -->
         <div style="display: grid;grid-template-columns: 1fr 2fr;grid-gap:20px; margin-right: 40px;  ">
             <div class="row" style="width: 100%;">
-                <div class="col-md-6" style="margin-top: 40px;">
+                <div class="col-md-6">
 
 
 <!-- CAS 1 : EFECTUER RECGERCHE  -->
@@ -471,7 +447,7 @@
 
                                                 <div style="  width:  50% ; ">
                                                     <div class="property-entry h-100">
-                                                        <a href="{{ route('acceuil.show',$item->id) }}" class="property-thumbnail">
+                                                        <a href="{{ route('acceuil.show',$item->bi->id) }}" class="property-thumbnail">
                                                             <div class="offer-type-wrap">
                                                                 <span class="offer-type bg-info">Plus d'info</span>
                                                             </div>
@@ -484,7 +460,7 @@
                                                         <div class="p-4 property-body">
                                                             
                                                             <h2 class="property-title"><a
-                                                                    href="{{ route('acceuil.show',$item->id) }}">{{ $item->bi->titre }}</a>
+                                                                    href="{{ route('acceuil.show',$item->bi->id) }}">{{ $item->bi->titre }}</a>
                                                             </h2>
                                                             <span
                                                                 class="property-location d-block mb-3 text-uppercase"><span
@@ -714,13 +690,13 @@
 
     <br> <br>
 @if(isset($posts))
-    <div class="pagination-block" style="align-self: center;align-items: center;position: relative; left:350px;">
+    <div class="pagination-block" style="align-self: center;align-items: center;position: relative; left:500px;">
      
        {!! $posts->links('layouts.paginationlinks') !!}
     </div>
 @endif
 @if(isset($search))
-    <div class="pagination-block" style="align-self: center;align-items: center;position: relative; left:350px;">
+    <div class="pagination-block" style="align-self: center;align-items: center;position: relative; left:500px;">
      
        {!! $search->links('layouts.paginationlinks') !!}
     </div>

@@ -38,7 +38,7 @@
 
 </head>
 
-<body>
+<body style="overflow-x: hidden;">
 
     <div class="site-loader"></div>
 
@@ -118,7 +118,7 @@
                                         <ul class="dropdown arrow-top">
                                             <li><a href="/profile">Profile</a></li>
                                             <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">Deconnexion</a>
+                                                     document.getElementById('logout-form').submit();">Déconnexion</a>
                                             </li>
                                             <form id="logout-form" action="{{ route('logout') }}"
                                                 method="POST" class="d-none">
@@ -396,6 +396,7 @@
   <div class="dropdown-menu">
     <a class="dropdown-item"  href="{{ route('post.partage',$item->id) }}">Sur le site</a>
     <button class="dropdown-item" id="facebook-btn{{ $item->id}}" onclick="location.href = `https://www.facebook.com/sharer.php?u=http://127.0.0.1:8000/acceuil/{{ $item->id }}&text=/{{ $item->title }}`">Faceboock</button>
+    <button class="dropdown-item" id="facebook-btn{{ $item->id}}" onclick="location.href = `https://www.twitter.com/share?url=http://127.0.0.1:8000/acceuil/{{ $item->id }}&text=/{{ $item->title }}`">Twitter</button>
    
   </div>
 </div>    

@@ -18,7 +18,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
     </script>
-
+<script src="https://kit.fontawesome.com/daf86e4a98.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -29,7 +29,18 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/mediaelementplayer.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('fonts/flaticon/font/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fl-bigmug-line.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     <!-- ---------------------------------------------------------------------------- -->
 
@@ -60,6 +71,28 @@
     <link rel="stylesheet" type="text/css"
         href="{{ asset('bootstrap-4.4.1/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('pubAnn/css/style1.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css ">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
+    <link rel="stylesheet" href="{{asset('fonts/icomoon/style.css')}}">
+
+
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{asset('css/jquery-ui.css')}}">
+    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/bootstrap-datepicker.css')}}">
+    <link rel="stylesheet" href="{{asset('css/mediaelementplayer.css')}}">
+    <link rel="stylesheet" href="{{asset('css/animate.css')}}">
+    <link rel="stylesheet" href="{{asset('fonts/flaticon/font/flaticon.css')}}">
+    <link rel="stylesheet" href="{{asset('css/fl-bigmug-line.css')}}">
+
+
+    <link rel="stylesheet" href="{{asset('css/aos.css')}}">
+
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
 
 
@@ -72,92 +105,138 @@
     .date {
         font-size: 12px;
     }
+    *::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #D2D2D2;
+  border-radius: 10px; 
+}
+@media only screen and (max-width: 768px) {
+    #main{
+        flex-direction: column;
+    }
+}
+
 </style>
 
     <!-- Comments -->
 
 </head>
 
-<body>
-    <div id="app" class="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                @guest
-                @else
-                    <a class="navbar-brand" href="{{ url('/profile') }}">
-                        <a href="/profile"><img src="{{ URL::asset(Auth::user()->profile_image) }}" width="60px"
-                                style="border-radius: 50%;height: 40px; width: 40px "> </a>
-                    </a>
+<div class="site-navbar m-0 p-0" style="position:relative; background-image: url({{asset('images/hero_bg_1.jpg')}})">
+            <div class="container py-1">
+                <div class="row align-items-center">
+                    <div class="col-8 col-md-8 col-lg-4">
+                        <h1 class="mb-0"><a href="/" class="text-white h2 mb-0"><strong>Location<span
+                                        class="text-danger">.</span></strong></a></h1>
+                    </div>
+                    <div class="col-4 col-md-4 col-lg-8">
+                        <nav class="site-navigation text-right text-md-right" role="navigation">
 
-                @endguest
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                            <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#"
+                                    class="site-menu-toggle js-menu-toggle text-white"><span
+                                        class="icon-menu h3"></span></a></div>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if(Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link"
-                                        href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <ul class="site-menu js-clone-nav d-none d-lg-block "
+                                style="padding-right: 0px; padding-left:0px; left: 0px">
+                                <li class="active">
+                                    <a href="/">Acceuil</a>
                                 </li>
-                            @endif
 
-                            @if(Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link"
-                                        href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <li><a href="/annonces">Annonces</a>
+
                                 </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}"
-                                        method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
+
+                                <li class="has-children">
+                                    <a href="#">Publier</a>
+                                    <ul class="dropdown arrow-top">
+                                        <li><a href="/create">Bien Immobilier</a></li>
+                                        <li><a href="/CreerPoste">Poste</a></li>
+                                        <!--  <li><a href="#">Commercial Building</a></li>
+                      <li class="has-children">
+                        <a href="#">Sub Menu</a>
+                        <ul class="dropdown">
+                          <li><a href="#">Menu One</a></li>
+                          <li><a href="#">Menu Two</a></li>
+                          <li><a href="#">Menu Three</a></li>-->
+                                    </ul>
+                                </li>
+
+
+
+
+                                <li><a href="/apropos">À Propos</a></li>
+                                <li><a href="/contact">Contactez Nous</a></li>
+                                @guest
+                                    <li><a href="/connecter">Se Connecter</a></li>
+                                @else
+                                  @if(auth()->user()->is_admin == 1)
+                                    <li class="has-children">
+                                        <a href="/profile"><img src="{{ asset(Auth::user()->profile_image) }}" width="60px"
+                                                style="border-radius: 50%;height: 40px; width: 40px "> </a>
+                                        <ul class="dropdown arrow-top">
+                                             <li><a href="/dashboard">Dashboard</a></li>
+                                            <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Déconnexion</a>
+                                            </li>
+                                            <form id="logout-form" action="{{ route('logout') }}"
+                                                method="POST" class="d-none">
+                                                @csrf
+                                            </form> 
+                                        </ul>
+                                    </li>
+                                     @else
+                                    <li class="has-children">
+                                        <a href="/profile"><img src="{{ asset(Auth::user()->profile_image) }}" width="60px"
+                                                style="border-radius: 50%;height: 40px; width: 40px "> </a>
+                                        <ul class="dropdown arrow-top">
+                                            <li><a href="/profile">Profile</a></li>
+                                            <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Déconnexion</a>
+                                            </li>
+                                            <form id="logout-form" action="{{ route('logout') }}"
+                                                method="POST" class="d-none">
+                                                @csrf
+                                            </form> 
+                                        </ul>
+                                    </li>
+                                   @endif
+                                @endguest
+                            </ul>
+                        </nav>
+                    </div>
+
+
                 </div>
             </div>
-        </nav>
+        </div>
+<body style="margin: 0 auto;overflow-x: hidden;">
+   
+       <a href="/annonces"><button type="button" class="btn btn-link" style="color:black; font-weight: 500;"><span style="font-size: 0.9em;"><i class="fas fa-arrow-left"></i></span>&nbsp;Retour</button></a>
+  
 
-
-    </div>
-
-    <div class="container m-5 d-flex " style="height:500px;">
-        <div class="container d-flex w-50">
+    <div class="container d-flex " id="main">
+        <div class="container d-flex w-50" style="position:relative;">
 
             <a href="{{ route ('profile.user',$post->user->id) }}"
                 style="cursor: pointer;"><img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15"
                     src="{{ URL::asset($post->user->profile_image) }}"
                     alt="{{ $post->user->profile_image }}"></a>
+@if($post->id_imm!=0 )
+                <a onclick="showbi()" style="top:1rem;right: 2rem;position:absolute;cursor:pointer;"><i class="far fa-eye"></i></a>
+                @endif  
 
-
-            <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30" style="border-radius: 20px; height:500px ">
+            <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30" id="post" style="border-radius: 20px; height:500px;" >
                 <!-- <div style=" ">  -->
+                
                 <div class="g-mb-15" style=" padding-right: 10px;">
                     <a href="{{ route ('profile.user',$post->user->id) }}"
                         style="cursor: pointer;">
@@ -169,10 +248,7 @@
 
                     <div><i class="fas fa--marker-alt" style="font-family:  sans-serif; "> {{ $post->titre }}</i>
                     </div>
-                    <i class="fas fa-map-marker-alt"> : {{ $post->location }} </i>
-                    <div><i class="fas fa-map-mar"> Nombre de personnes cherché : {{ $post->nb_personnes }}</i></div>
-
-
+                    
 
                     <div><span
                             class="g-color-gray-dark-v4 g-font-size-12">{{ $post->created_at->diffForhumans() }}</span>
@@ -180,57 +256,89 @@
                     <h4 class="h5 g-color-gray-dark-v1 mb-0"></h4>
 
                     <p>{{ $post->description }}</p>
+
+
+                                                     <div class="row">
+                                             <div class="col-md-6"><i class="fas fa-map-marker-alt"></i> : {{ $post->location }}</div>
+                                             <div class="col-md-6">  <i class="fas fa-user-friends"></i> : {{ $post->nb_personnes }} Personnes</div>
+                                            </div>
+
                 </div>
                 <hr>
-
-                <ul class="list-inline d-sm-flex my-0">
-                    <div class="cont">
-                        <li class="list-inline-item g-mr-20">
-                            <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
-
-                                <button class="like__btn" style="  
-                          
-                           font-size: 10px; 
-                           font font-family: 'Open sans', sans-serif; 
-                            border: none; 
-                            background-color:#fafafa
-                             border-radius: 5px;
-                             cursor: pointer;
-                              outline: none; 
-                   ">
-                                    <span id="icon"><i class="far fa-thumbs-up" style="font-size: 20px;"></i></span>
-
-
-                                </button>
-                                <input type="number" id="input1" value="0" name="">Likes
-
-
-
-                            </a>
-                        </li>
-                        <li class="list-inline-item g-mr-20">
-                            <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
-
-
-                            </a>
-                        </li>
+                <section class="commentform-area" style="margin-top: 5px;">
+                @guest
+                    <div class="container">
+                        <h4>Veuillez vous connecter pour commenter</h4>
                     </div>
-                    <!-- 
-                 <li class="list-inline-item ml-auto">
-                  <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
-                   <i class="fas fa-comment-alt"></i>
-                   Chat
-                  </a>
-                </li> -->
-                    <l i class="list-inline-item ml-auto">
-                        <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
-                            <i class="fas fa-comments"></i>
-                            Commentaires
-                        </a>
-                        </li>
 
-                </ul>
+                       @else
+
+                 
+                        <form action="{{ route ('comments.store', $post->id ) }}"
+                            method="POST">
+                            <div class="row">
+                                <!-- mseht textarea -->
+                                    @csrf
+                                    <textarea style="border-radius: 30px;" class="form-control" name="contenue"
+                                        placeholder="Taper un commentaire" onfocus="this.placeholder = 'Votre Commentaire'"
+                                        onblur="this.placeholder = 'Votre Commentaire'" required=""></textarea>
+                             
+                               
+
+                            </div> <button type="submit" class="primary-btn m-2" href="#">Envoyer</button>
+                        </form>
+              
+
+                @endguest
+            </section>
             </div>
+            @if($post->id_imm!=0 )
+            <div class="property-entry h-100" id="bienimmobilier" style="position:static; display:none;">
+                                                        <a href="{{ route('acceuil.show',$post->id) }}" class="property-thumbnail">
+                                                            <div class="offer-type-wrap">
+                                                                <span class="offer-type bg-info">Plus d'info</span>
+                                                            </div>
+                                                            @php
+                                                                $photos = json_decode($post->bi->images);
+                                                            @endphp
+                                                            <img src="{{ asset('uploads/'.$photos[0]) }}"
+                                                                alt="Image" height="220px;" width="400px;">
+                                                        </a>
+                                                        <div class="p-4 property-body">
+                                                            
+                                                            <h2 class="property-title"><a
+                                                                    href="{{ route('acceuil.show',$post->id) }}">{{ $post->bi->titre }}</a>
+                                                            </h2>
+                                                            <span
+                                                                class="property-location d-block mb-3 text-uppercase"><span
+                                                                    class="property-icon icon-room"></span>{{ $post->bi->ville }},{{ $post->bi->quartier }}</span>
+                                                            <strong
+                                                                class="property-price text-primary mb-3 d-block text-success">{{ $post->bi->prix }}
+                                                                DH</strong>
+                                                            <ul class="property-specs-wrap mb-3 mb-lg-0">
+                                                                <li>
+                                                                    <span class="property-specs">Chambres</span>
+                                                                    <span
+                                                                        class="property-specs-number">{{ $post->bi->nb_chambres }}<sup>+</sup></span>
+
+                                                                </li>
+                                                                <li>
+                                                                    <span class="property-specs">Personnes</span>
+                                                                    <span
+                                                                        class="property-specs-number">{{ $post->bi->nb_personnes }}</span>
+
+                                                                </li>
+                                                                <li>
+                                                                    <span class="property-specs">Superficie</span>
+                                                                    <span
+                                                                        class="property-specs-number">{{ $post->bi->superficie }}</span>
+
+                                                                </li>
+                                                            </ul>
+
+                                                        </div>
+                                                    </div>
+            @endif
         </div>
         <div class="w-50 ml-4" style="height:500px;overflow:scroll;">
 
@@ -246,57 +354,50 @@
                                     <div class="user justify-content-between d-flex" style="background-color:#fafafa !important;border-radius: 30px;padding: 5px; padding-left: 7px; margin-bottom: 5px;">
                                         <div class="thumb">
                                             <img src="{{ URL::asset($item->user->profile_image) }}" alt=""
-                                                style="border-radius: 50%; height: 35px; width: 35px" />
+                                                style="border-radius: 50%; height: 35px; width: 35px; margin:0.2rem;" />
                                             <img src="" alt="" />
                                         </div>
                                         <div class="desc">
-                                            <h5><a href="#" style="font-size:16px;">{{ $item->user->name }}</a></h5>
-                                            <p class="date">
+                                            <h5 style="margin:0;"><a href="#" style="font-size:16px; margin:0;">{{ $item->user->name }}</a></h5>
+                                            <p class="date" style="margin:0; font-size:10px;">
                                                 {{ $item->created_at->format('D, d M Y H:i') }}
-<br>
-                                                <p class="comment">
+                                            </p>
+                                            <hr class="col-10" style="margin-top:2px;margin-bottom:2px;">
+                                            <p class="comment" style="margin:0;">
                                                 &nbsp; &nbsp; &nbsp; {{ $item->contenue }}
                                             </p>
-                                            </p>
-                                            
 
-                                            <div class="col">
+                                          
+
+
+                                        </div> 
+                                         <div class="col justify-content-md-center">
                                                 @if($item->user->id==Auth::id())
-
-                                                    <a
-                                                        href="{{ route('comments.destroy',$item->id) }}"><i
-                                                            class="fas fa-tra" style="color: #007bff;font-size: 12px;">supprimer
-                                                        </i></a>
-                                                    &nbsp; &nbsp;
+                                                    <a href="{{ route('comments.destroy',$item->id) }}">
+                                                    <i class="far fa-trash-alt"></i>
+                                                        </a>
+                                                  
 
 
 
                                                     <a type="button" data-toggle="modal"
                                                         data-target="#ModifyComment{{ $item->id }}"
-                                                        data-whatever="@mdo"><i class="fas fa-tra"
-                                                            style="color: #007bff; cursor: pointer;font-size: 12px;"> modifier</i></a>
+                                                        data-whatever="@mdo"><i class="far fa-edit"></i>
 
 
 
                                                     <blade
                                                         include|(%26%2339%3Bmodal.commentEdit%26%2339%3B)%20%20%20%0D />
 
-
-
-
                                                     </a>
                                                 @endif
 
                                                 <a style="cursor: pointer;"
                                                     id="rep"
-                                                    onclick="showReplyForm('{{ $item->id }}','{{ $item->user->name }}')"><i
-                                                        class="fas fa-reply" style="color: #007bff;font-size: 12px;">repondre</i> </a>
+                                                    onclick="showReplyForm('{{ $item->id }}','{{ $item->user->name }}')"><i class="fas fa-reply-all"></i></a>
 
-
+                         @include('modal.commentEdit')
                                             </div>
-
-
-                                        </div>
                                     </div>
 
 
@@ -307,49 +408,45 @@
 
 
                             @foreach($item->reponse as $reply)
-                                <div class="comment-list" style="margin-left: 50px; padding: 7px;">
-                                    <div class="single-comment justify-content-between d-flex">
+                                <div class="single-comment justify-content-between d-flex" style="margin-left: 50px;">
+                                    <div class="single-comment justify-content-between d-flex" style="padding: 5px;">
                                         <div class="user justify-content-between d-flex">
-                                            <div class="thumb">
+                                            <div class="thumb" style="margin-right:5px;">
                                                 <!-- image  -->
-                                                <img src="{{ URL::asset($item->user->profile_image) }}" alt=""
+                                                <img src="{{ URL::asset($reply->user->profile_image) }}" alt=""
                                                     style="border-radius: 50%; height: 35px; width: 35px" />
                                                 <img src="img/asset/c3.jpg" alt="" />
                                             </div>
-                                            <div class="desc">
-                                                <a href="#" style="font-size:17px;">{{ $reply->user->name }}</a><p class="date">
-                                                    {{ $reply->created_at->format('D, d M Y H:i') }} <br>
-                                                    <p class="comment">
+                                            <div class="desc" style="background-color:rgba(0, 123, 255, 0.4); border-radius: 20px;padding: 5px; padding: 7px; margin-bottom: 5px;">
+                                                <h5 style="margin:0;"><a href="#" style="font-size:17px;color:white;">{{ $reply->user->name }}</a></h5>
+                                                <p class="date" style="font-size:10px;margin-bottom:2px;">
+                                                    {{ $reply->created_at->format('D, d M Y H:i') }}</p>
+                                                    <p class="comment" style="margin:0;">
                                                     &nbsp;&nbsp;&nbsp;{{ $reply->contenue }}
                                                 </p>
-                                                </p>
-                                                
-                                                
+                                               
+                                            </div><div class="col" style="margin:0;">
 
-
-
-                                                <div class="col">
-
-                                                    <a
-                                                        href="{{ route('comments.destroy',$reply->id) }}"><i
-                                                            class="fas fa-tra" style="color: #007bff;font-size: 12px;">supprimer
-                                                        </i></a>
+                                                   
 
                                                     <!--  <a  href="{{ route('post.show',[0,$reply->id]) }}" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style=""> -->
-
+                                                @if($reply->user->id==Auth::id())
+                                                     <a
+                                                        href="{{ route('comments.destroy',$reply->id) }}"><i class="far fa-trash-alt"></i></a>
                                                     <a type="button" data-toggle="modal"
                                                         data-target="#ModifyComment{{ $reply->id }}"
-                                                        data-whatever="@mdo"><i class="fas fa-tra"
-                                                            style="color: #007bff; cursor: pointer;font-size: 12px;"> modifier</i></a>
-
+                                                        data-whatever="@mdo"><i class="far fa-edit"></i></span>
+                                                        
+                                                        <blade
+                                                        include|(%26%2339%3Bmodal.commentEdit%26%2339%3B)%20%20%20%0D />
+                                                        
+                                                        </a>
+                                                @endif
 
                                                 </div>
-
-
-                                            </div>
                                         </div>
 
-                                    </div>
+                                    </div> 
                                 </div>
                                 @include('modal.replyEdit')
                             @endforeach
@@ -376,22 +473,21 @@
 
                                             @else
 
-                                                <h5><a href="#">{{ $item->user->name }}</a></h5>
-                                                <p class="date"></p>
+                
                                                 <div class="row flex-row d-flex">
                                                     <form
                                                         action="{{ route('comments.reponse',$item->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         <div class="col-lg-12">
-                                                            <textarea id="reply-form-{{ $item->id }}-text" cols="60"
+                                                            <textarea id="reply-form-{{ $item->id }}-text" style="border-radius:20px;" cols="50"
                                                                 rows="2" class="form-control mb-10" name="contenue"
                                                                 placeholder="Messege" onfocus="this.placeholder = ''"
                                                                 onblur="this.placeholder = 'Messege'"
                                                                 required=""></textarea>
                                                         </div>
-                                                        <button type="submit" class="btn-reply text-uppercase ml-3"
-                                                            style="background-color: #007bff;">Reply</button>
+                                                        <button type="submit" class="btn btn-dark ml-3"
+                                                            style="background-color: #007bff;">réponse</button>
                                                     </form>
                                                 </div>
                                             @endguest
@@ -405,41 +501,20 @@
 
                 </div>
             </div>
-
-
-            <section class="commentform-area pb-120 pt-80 mb-100" style="margin-top: 5px;">
-                @guest
-                    <div class="container">
-                        <h4>Veuillez vous connecter pour commenter</h4>
-                    </div>
-
-                       @else
-
-                    <div class="container fixed-bottom">
-                        <form action="{{ route ('comments.store', $post->id ) }}"
-                            method="POST">
-                            <div class="d-flex">
-                                <!-- mseht textarea -->
-
-                             
-
-                                    @csrf
-                                    <textarea style="border-radius: 30px;" class="form-control " name="contenue"
-                                        placeholder="Taper un commentaire" onfocus="this.placeholder = 'Votre Commentaire'"
-                                        onblur="this.placeholder = 'Votre Commentaire'" required=""></textarea>
-                             
-                                <button type="submit" class="primary-btn m-2" href="#">Envoyer</button>
-
-                            </div>
-                        </form>
-                    </div>
-
-                @endguest
-            </section>
         </div>
     </div>
 
-
+<script>
+function showbi(){
+   if (document.getElementById("bienimmobilier").style.display=="none"){
+        document.getElementById("bienimmobilier").style.display = "inline";
+        document.getElementById("post").style.display = "none";
+    } else {
+        document.getElementById("bienimmobilier").style.display ="none";
+        document.getElementById("post").style.display = "inline";
+    }
+}
+</script>
     <!--------------------------------------------------- Comments------------------------------------------------>
 
     <script src="comment/js/vendor/jquery-2.2.4.min.js"></script>
@@ -455,7 +530,21 @@
     <script src="{{ asset('comment/js/main.js') }}"></script>
 
 
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/mediaelement-and-player.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.stellar.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.countdown.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('js/aos.js') }}"></script>
+    <script src="{{ asset('js/circleaudioplayer.js') }}"></script>
 
+    <script src="{{ asset('js/main.js') }}"></script>
 
 
     <script type="text/javascript">

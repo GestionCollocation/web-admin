@@ -11,14 +11,14 @@
         <form  action="{{route('comments.update',$item->id)}}" method="POST">
            @csrf
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">:</label>
+            <label for="recipient-name" class="col-form-label"></label>
             <textarea type="text" name="contenue" class="form-control" id="recipient-name">{!! $item->contenue !!}</textarea>
           </div>
           
       
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+     
         <button type="submit" class="btn btn-primary">Modifier</button>
       </div>
         </form>

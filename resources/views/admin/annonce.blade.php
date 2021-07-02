@@ -23,7 +23,7 @@
   <div class="wrapper ">
     <div class="sidebar" data-color="green" data-background-color="white" data-image="assets/img/sidebar-1.jpg">
      
-      <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
+      <div class="logo"><a href="/" class="simple-text logo-normal">
          location
         </a></div>
       <div class="sidebar-wrapper">
@@ -66,11 +66,11 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="/admin/profile">
+            <a class="nav-link" href="/messages">
               <i class="material-icons">
-                info
+                message
               </i>
-              <p>Support</p>
+              <p>Messages</p>
             </a>
           </li>
           <li class="nav-item ">
@@ -169,7 +169,7 @@
                 <div class="col-12" style="background-color: rgb(109, 109, 201)">
                     <div class="row  " style="text-transform: uppercase ; text-decoration : none; ">
                   <div class="col-4 text-center" id="commentBtn{{$item->id}}"  style="color : white; pointer-events: cursor;"><a href="#" style="color : white; pointer-events: cursor;">Commentaires</a></div>    
-                        <div class="col-4 text-center"><a href="#" style="color : white; pointer-events: cursor;">modifier</a> </div>
+                        
                         <div class="col-4 text-center"><a href="#" data-toggle="modal" data-target="#deletePost{{$item->id}}" style="color : white ; pointer-events: cursor ;">supprimer</a> </div>
                     </div>
                 </div>
@@ -215,7 +215,7 @@
                   <div class="col-12" style="background-color: rgb(109, 109, 201)">
                       <div class="row  " style="text-transform: uppercase ; text-decoration : none; ">
                         
-                          <div class="col-6 text-center"><a href="" style="color : white">modifier</a> </div>
+                          
                           <div class="col-6 text-center"><a href="#" data-toggle="modal" data-target="#deleteComment{{$comments->id}}"  style="color : white">supprimer</a> </div>
                       </div>
                   </div>

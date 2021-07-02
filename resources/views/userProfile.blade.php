@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="{{asset('fonts/icomoon/style.css')}}">
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -121,7 +121,7 @@
     </style>
 </head>
 
-<body>
+<body style="overflow-x: hidden;">
     <!--header-W-->
     <div class="site-loader"></div>
     <div class="site-wrap">
@@ -135,11 +135,12 @@
             <div class="site-mobile-menu-body"></div>
         </div> <!-- .site-mobile-menu -->
 
-        <div class="site-navbar mt-4" style="padding-left: 0px; padding-right: 0px;">
+        
+        <div class="site-navbar m-0 p-0" style="position:relative;background-image: url({{ asset('images/hero_bg_2.jpg') }});">
             <div class="container py-1">
                 <div class="row align-items-center">
                     <div class="col-8 col-md-8 col-lg-4">
-                        <h1 class="mb-0"><a href="index.html" class="text-white h2 mb-0"><strong>Location<span
+                        <h1 class="mb-0"><a href="/" class="text-white h2 mb-0"><strong>Location<span
                                         class="text-danger">.</span></strong></a></h1>
                     </div>
                     <div class="col-4 col-md-4 col-lg-8">
@@ -152,7 +153,7 @@
                             <ul class="site-menu js-clone-nav d-none d-lg-block "
                                 style="padding-right: 0px; padding-left:0px; left: 0px">
                                 <li class="active">
-                                    <a href="/acceuil">Acceuil</a>
+                                    <a href="/">Acceuil</a>
                                 </li>
 
                                 <li><a href="/annonces">Annonces</a>
@@ -184,30 +185,37 @@
                                 @guest
                                     <li><a href="/connecter">Se Connecter</a></li>
                                 @else
+                                  @if(auth()->user()->is_admin == 1)
                                     <li class="has-children">
-                                        <a href="/profile"><img
-                                                src="{{ URL::asset(Auth::user()->profile_image) }}" width="60px"
+                                        <a href="/profile"><img src="{{ URL::asset(Auth::user()->profile_image) }}" width="60px"
                                                 style="border-radius: 50%;height: 40px; width: 40px "> </a>
                                         <ul class="dropdown arrow-top">
-
+                                             <li><a href="/dashboard">Dashboard</a></li>
                                             <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">Deconnexion</a>
+                                                     document.getElementById('logout-form').submit();">Déconnexion</a>
                                             </li>
-
-
                                             <form id="logout-form" action="{{ route('logout') }}"
                                                 method="POST" class="d-none">
                                                 @csrf
-                                            </form>
-                                            <!--  <li><a href="#">Commercial Building</a></li>
-                      <li class="has-children">
-                        <a href="#">Sub Menu</a>
-                        <ul class="dropdown">
-                          <li><a href="#">Menu One</a></li>
-                          <li><a href="#">Menu Two</a></li>
-                          <li><a href="#">Menu Three</a></li>-->
+                                            </form> 
                                         </ul>
                                     </li>
+                                     @else
+                                    <li class="has-children">
+                                        <a href="/profile"><img src="{{ URL::asset(Auth::user()->profile_image) }}" width="60px"
+                                                style="border-radius: 50%;height: 40px; width: 40px "> </a>
+                                        <ul class="dropdown arrow-top">
+                                            <li><a href="/profile">Profile</a></li>
+                                            <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Déconnexion</a>
+                                            </li>
+                                            <form id="logout-form" action="{{ route('logout') }}"
+                                                method="POST" class="d-none">
+                                                @csrf
+                                            </form> 
+                                        </ul>
+                                    </li>
+                                   @endif
                                 @endguest
                             </ul>
                         </nav>
@@ -219,31 +227,18 @@
         </div>
     </div>
 
-    <div class="slide-one-item home-slider owl-carousel">
-        <div class="site-blocks-cover inner-page-cover overlay"
-            style="background-image: url({{ asset('images/hero_bg_2.jpg') }});" data-aos="fade"
-            data-stellar-background-ratio="0.5">
-            <div class="container">
-                <div class="row align-items-center justify-content-center text-center">
-                    <div class="col-md-10">
-                        <h1 class="mb-2">Profile</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+ 
     <!-- fin-header-W-->
     <div class="container">
         <div class="main-body">
 
             <!-- Breadcrumb -->
-            <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <!-- <nav aria-label="breadcrumb" class="main-breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">User Profile</li>
                 </ol>
-            </nav>
+            </nav> -->
             <!-- /Breadcrumb -->
 
             <div class="row gutters-sm">
@@ -258,7 +253,7 @@
                                     <p class="text-muted font-size-sm">{{ $user->telephone }}</p>
                                     <a
                                         href="{{ route('send.default',['id'=>$user->id]) }}"><button
-                                            class="btn btn-outline-primary">Message</button></a>
+                                            class="btn btn-outline-primary"> <span class="mr-2"><i class="far fa-paper-plane"></i></span>Envoyer</button></a>
                                 </div>
                             </div>
                         </div>
@@ -394,84 +389,6 @@
     <!-- footer-W --- -->
     </div>
 
-    <!-- part-footer--------------- -->
-
-
-
-
-
-
-
-    <footer class="site-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="mb-5">
-                        <h3 class="footer-heading mb-4">About Creative</h3>
-                        <p>Cette application Web est destinée à trouver des personnes prêtes à collaborer à la location
-                            si vous êtes ici pour la même raison, alors dépêchez-vous de trouver un colocataire qui vous
-                            comprendra</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <div class="row mb-5">
-                        <div class="col-md-12">
-                            <h3 class="footer-heading mb-4">Navigations</h3>
-                        </div>
-                        <div class="col-md-6 col-lg-6">
-                            <ul class="list-unstyled">
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Buy</a></li>
-                                <li><a href="#">Rent</a></li>
-                                <li><a href="#">Properties</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6 col-lg-6">
-                            <ul class="list-unstyled">
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Contact Us</a></li>
-                                <li><a href="#">Terms</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-
-                </div>
-
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <h3 class="footer-heading mb-4">Follow Us</h3>
-
-                    <div>
-                        <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-                        <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-                        <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-                        <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
-                    </div>
-
-
-
-                </div>
-
-            </div>
-            <div class="row pt-5 mt-5 text-center">
-                <div class="col-md-12">
-                    <p>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script data-cfasync="false"
-                            src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-                        <script>
-                            document.write(new Date().getFullYear());
-
-                        </script> All rights reserved | made with <i class="icon-heart text-danger"
-                            aria-hidden="true"></i>Im Creative</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </p>
-                </div>
-
-            </div>
-        </div>
-    </footer>
 
     </div>
     <!-- fin-footer---- -->

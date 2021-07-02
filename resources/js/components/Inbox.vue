@@ -88,6 +88,8 @@ import ContactsList from './ContactsList';
 
 <style>
 .primary-inbox {
+    border-bottom-right-radius:2rem;
+    border-bottom-left-radius:2rem;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     display: flex;
     border-radius: 5px;
@@ -97,11 +99,15 @@ import ContactsList from './ContactsList';
     margin: 0;
 }
 .messaging { 
+    border-bottom-right-radius:2rem;
+    border-bottom-left-radius:2rem;
     max-height: calc( 100vh - 70px );
     padding: 0 0 50px 0;
     background-color: #fff;
 }
 .side-contacts {
+    border-bottom-right-radius:2rem;
+    border-bottom-left-radius:2rem;
     background: #f8f8f8 none repeat scroll 0 0; 
     overflow: hidden;
     width: 30%;

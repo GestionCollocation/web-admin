@@ -111,6 +111,7 @@ export default {
 }
 
 .inbox {
+    border-bottom-left-radius:2rem;
     display: flex;
     flex-direction: column;
     height: calc( 100vh - 70px );
