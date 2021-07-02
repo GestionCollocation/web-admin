@@ -54,7 +54,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="/admin/annonce">
+            <a class="nav-link" href="/admin/annonces">
               <i class="material-icons">
                 article
               </i>
