@@ -40,15 +40,15 @@ Route::get('/connecter', function () {
     return view('connecter');
 });
 
-Route::get('/users', function () {
-    return view('admin.users');
-});
-Route::get('/bienImmobilier', function () {
-    return view('admin.bienImmobilier');
-});
-Route::get('/admin/annonce', function () {
-    return view('admin.annonce');
-});
+// Route::get('/users', function () {
+//     return view('admin.users');
+// });
+// Route::get('/bienImmobilier', function () {
+//     return view('admin.bienImmobilier');
+// });
+// Route::get('/admin/annonce', function () {
+//     return view('admin.annonce');
+// });
 Route::get('/admin/profile', function () {
     return view('admin.profile');
 });
