@@ -167,7 +167,7 @@
             
             
               <div class="row">
-                <div class="col-md-4">
+                <div class="col-12">
                 
                   <div class="form-group">
                     <label class="bmd-label-floating">Sexe</label>
@@ -180,13 +180,11 @@
                               <strong>{{ $message }}</strong>
                         </span>
                    @enderror
-                  </div>
-                  
-                 
+                  </div>  
                 </div>
-
-                   <div class="col-md-8">
-                  <div class="form-group">
+              
+                   <div class="col-12 mt-4">
+                  <div class="form-group ">
                     <label class="bmd-label-floating">Telephone</label>
                     <input id="telephone" type="text"  class="form-control @error('telephone') is-invalid @enderror"
                           name="telephone" value="{{ Auth::user()->telephone }}">

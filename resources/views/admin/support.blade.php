@@ -120,6 +120,66 @@
 <div class="content-fluid pr-4 pl-4 pt-4" >
     <h2>Les messages recus</h2>
     <div class="row text-align center ">
+      @for ($i = 0; $i < 3; $i++)
+      <div class="col-md-6 col-sm-12  " >
+        <div class="card p-4" style="background-color: white ; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+           <div class="row">
+               <div class="col-10">
+                   <span style="font-weight: bold ; color : rgb(4,81,142)">Name</span>
+                   <br>
+                   <span>email</span>
+               </div>
+               <div class="col-2">
+                   <span class=" pull-right" style="width: 150px">date</span>
+                  
+               </div>
+               <div class="col-12">
+                   <h3 style="font-weight: bold ; color : rgb(41,195,72)">subject</h3>
+               </div>
+   
+               <div class="col-12">
+                   <p style="text-align: justify ; font-size : 80%" id="message{{ $i }}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium cumque fugiat natus tenetur amet voluptas fuga possimus qui vel consectetur, odio ut doloremque dolores, provident deserunt sint dolore aperiam soluta!</p>
+                  
+               </div>
+               <div class="col-6 ">
+                <span class="pull-left"  id="readBtn{{ $i }}" style="display: none ; cursor : pointer ; color : rgb(4,81,142)">Lire la suite</span>
+               
+               </div>
+               <div class="col-6 ">
+                <span class="pull-right " style="cursor : pointer ;font-weight : bold ; color : rgb(235, 57, 57)">Supprimer</span>
+               </div>
+             
+
+               <script>
+                 var messageText{{ $i }} = document.getElementById("message{{ $i }}").innerHTML
+                if(messageText{{ $i }}.length > 100) {
+                    document.getElementById("readBtn{{ $i }}").style.display = "block"
+                    document.getElementById("message{{ $i }}").innerHTML =  document.getElementById("message{{ $i }}").innerHTML.substr(0,100) + "..." 
+                }
+                document.getElementById("readBtn{{ $i }}").onclick = function() {
+                  if(document.getElementById("message{{ $i }}").innerHTML.length <= 103) {
+                  
+                        document.getElementById("message{{ $i }}").innerHTML = messageText{{ $i }}
+                        document.getElementById("readBtn{{ $i }}").innerHTML = "lire moins "
+                  } 
+                  else {
+                        document.getElementById("message{{ $i }}").innerHTML =  document.getElementById("message{{ $i }}").innerHTML.substr(0,100) + "..." 
+                        document.getElementById("readBtn{{ $i }}").innerHTML = "Lire la suite"
+                  }
+                
+                }
+               </script>
+
+             
+              
+           </div>
+        </div>
+       </div>
+      @endfor
+        
+
+           
+
        @foreach($msg as $item)
         <div class="col-md-6 col-sm-12  " >
             <div class="card p-4" style="background-color: white ; box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
